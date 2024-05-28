@@ -1,0 +1,40 @@
+/* Estilos para el div que contiene la animación */
+* {
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html, body {
+    height: 100%; /* Asegura que el html y body ocupen toda la altura de la ventana */
+    margin: 0; /* Elimina el margen por defecto */
+}
+
+body {
+    background-image: url('../img/log.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: fixed; /* Fija la imagen para que no se desplace con el scroll */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#lottie-animation {
+    width: 300px; /* Ancho deseado */
+    height: 300px; /* Altura deseada */
+    margin: 0 auto; /* Centrar horizontalmente */
+}
+
+/* Estilos para el div que contiene el botón */
+.btn-container {
+    text-align: center; /* Centrar horizontalmente */
+    margin-top: 20px; /* Espacio superior */
+}
+
+h2, h3 {
+    text-align: center;
+    color: yellow;
+}

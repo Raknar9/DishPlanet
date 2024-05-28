@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/head::encabezado(~{::title}, ~{::link})}">
+    <meta charset="UTF-8">
+    <title>Panel</title>
+    <link rel="stylesheet" th:href="@{/css/controlPanel.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<nav th:replace="~{fragments/barraMenu::barraMenu}"></nav>
+<div class="container" id="container">
+    <div class="section" id="add-view-section">
+        <h2>Ver / Añadir</h2>
+        <div class="action-row">
+            <div class="action-container">
+                <div class="lottie-animation" id="add-menu-animation"></div>
+                <form th:action="@{/menu/nuevo}" method="Get">
+                    <button type="submit" class="btn btn-primary">Nuevo Menu</button>
+                </form>
+            </div>
+
+            <div class="action-container">
+                <div class="lottie-animation" id="add-dish-animation"></div>
+                <form th:action="@{/plato/nuevo}" method="Get">
+                    <button type="submit" class="btn btn-primary">Nuevo Plato</button>
+                </form>
+            </div>
+
+            <div class="action-container">
+                <div class="lottie-animation" id="view-inventory-animation"></div>
+                <form th:action="@{/inventario}" method="Get">
+                    <button type="submit" class="btn btn-primary">Inventario</button>
+                </form>
+            </div>
+
+            <div class="action-container">
+                <div class="lottie-animation" id="add-inventory-item-animation"></div>
+                <form th:action="@{/inventario/nuevo}" method="Get">
+                    <button type="submit" class="btn btn-primary">Nuevo item a Inventario</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="section" id="delete-section">
+        <h2>Borrar</h2>
+        <div class="action-row">
+            <div class="action-container">
+                <div class="lottie-animation" id="delete-dish-animation"></div>
+                <form th:action="@{/plato/eliminar}" method="Post">
+                    <div class="form-group">
+                        <label for="nombre">Plato a Eliminar:</label>
+                        <input type="text" id="nombre" name="nombre" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-danger">Eliminar Plato</button>
+                </form>
+            </div>
+
+            <div class="action-container">
+                <div class="lottie-animation" id="delete-menu-animation"></div>
+                <form th:action="@{/menu/eliminar}" method="Post">
+                    <div class="form-group">
+                        <label for="nombreMenu">Menu a Eliminar:</label>
+                        <input type="text" id="nombreMenu" name="nombreMenu" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-danger">Eliminar Menu</button>
+                </form>
+            </div>
+
+            <div class="action-container">
+                <div class="lottie-animation" id="delete-item-animation"></div>
+                <form th:action="@{/eliminar}" method="Post">
+                    <div class="form-group">
+                        <label for="nombreItem">Item a Eliminar:</label>
+                        <input type="text" id="nombreItem" name="nombreItem" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-danger">Eliminar Item</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="section" id="informe-section">
+        <h2>Informes</h2>
+        <div class="action-row">
+            <div class="action-container">
+                <div class="lottie-animation" id="informe-pedidos-animation"></div>
+                <form th:action="@{pedido/informePedidos}" method="GET">
+                    <button type="submit" class="btn btn-success">Generar Informe de Pedidos</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+<script th:src="@{/js/controlPanel.js}"></script>
+</body>
+</html>
+

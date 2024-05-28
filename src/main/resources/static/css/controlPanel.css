@@ -1,0 +1,68 @@
+/* controlPanel.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('../img/log.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.section {
+    width: 100%;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.section h2 {
+    margin-bottom: 20px;
+}
+
+.action-row {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.action-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 220px;
+}
+
+.lottie-animation {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 10px;
+}
+
+.btn {
+    width: 100%;
+}
+
+.form-group {
+    width: 100%;
+}
+
+.form-control {
+    margin-bottom: 10px;
+}
+h2{color: yellow}

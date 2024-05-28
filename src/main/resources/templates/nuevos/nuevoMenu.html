@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head::encabezado(~{::title}, ~{::link})}">
+  <meta charset="UTF-8">
+  <title>Nuevo Menú</title>
+  <link rel="stylesheet" th:href="@{/css/nuevoMenu.css}">
+</head>
+<body>
+<nav th:replace="~{fragments/barraMenu::barraMenu}"></nav>
+<div class="container">
+  <div class="lottie-animation left">
+    <div id="left-animation"></div>
+  </div>
+  <div class="form-container">
+    <h1>Nuevo Menú</h1>
+    <form th:action="@{/menu/guardar}" method="post" th:object="${menu}">
+      <label>Nombre:</label>
+      <input type="text" th:field="*{nombre}" required><br>
+
+      <label>Entrante:</label>
+      <input type="text" th:field="*{entrante}" required><br>
+
+      <label>Principal:</label>
+      <input type="text" th:field="*{principal}" required><br>
+
+      <label>Postre:</label>
+      <input type="text" th:field="*{postre}" required><br>
+
+      <label>Bebida:</label>
+      <input type="text" th:field="*{bebida}" required><br>
+
+      <label>Precio:</label>
+      <input type="number"  th:field="*{precio}" required><br>
+
+      <button type="submit">Guardar</button>
+    </form>
+  </div>
+  <div class="lottie-animation right">
+    <div id="right-animation"></div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.11/lottie_svg.min.js"></script>
+<script th:src="@{/js/nuevoMenuAnimation.js}"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</body>
+</html>
+

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/head::encabezado(~{::title}, ~{::link})}">
+    <meta charset="UTF-8">
+    <title>Fin</title>
+    <link rel="stylesheet" th:href="@{/css/finPedido.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<h2>Gracias por Realizar su pedido!</h2>
+<h3>En breve estará listo.....</h3>
+<div id="lottie-animation"></div>
+<div class="btn-container">
+    <a th:href="@{/plato/principales}" class="btn btn-primary">Nuevo Pedido</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.12/lottie.min.js"></script>
+<script th:src="@{/js/animation.js}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+</body>
+</html>

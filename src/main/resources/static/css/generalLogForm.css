@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-image: url("../img/log.jpg");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    min-height: 400px;
+    width: 300px;
+    border: 0.5px solid #FFA500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    padding: 3.5rem;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.container:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .7);
+}
+
+.container::after {
+    content: '';
+    position: absolute;
+    top: -130px;
+    left: 0;
+    height: 130px;
+    width: 100%;
+    background: #FFA500;
+    border-bottom-left-radius: 50% 50%;
+    border-bottom-right-radius: 50% 50%;
+    transition: 0.5s;
+}
+
+.container:hover::after {
+    top: 0;
+}
+
+h1, h2 {
+    color: #FFFF00;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group, .email, .password, .username {
+    width: 100%;
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    color: #fff;
+}
+
+input {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #FFA500;
+    border-radius: 30px;
+    padding: 5px 25px;
+    outline: none;
+    color: #fff;
+    margin-top: 5px;
+}
+
+input::placeholder {
+    color: #fff;
+}
+
+button {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #FFFF00;
+    border-radius: 30px;
+    height: 35px;
+    background-color: #FFA500;
+    color: #fff; /* Blanco */
+    font-weight: 700;
+    margin: 15px 0;
+    transition: 0.5s;
+}
+
+button:hover {
+    background-color: #FFFF00;
+    border: 1px solid #FFA500;
+    color: #FFA500;
+}
+
+.error {
+    color: red;
+    margin-top: 15px;
+}
+
+a {
+    color: #fff;
+    font-weight: 700;
+}
+
+a:hover {
+    color: #FFA500;
+}
+
+.login-wrapper {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-link, .forgot-password-link {
+    margin-top: 10px;
+}
+
+.lnr {
+    color: #fff;
+}
+.btn{background-color: yellow}

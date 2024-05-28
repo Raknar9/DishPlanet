@@ -1,0 +1,113 @@
+@startuml
+
+package "Entidades" {
+    class DetallePedido {
+        + id_detalle: Long
+        + nombres_platos: String
+        + precio_total: double
+        + NombreUsuario: String
+        + id_usuario: Long
+    }
+
+    class IngredienteUsado {
+        + id_ingredienteUsado: Long
+        + id_Plato: Long
+        + ingredientes: String
+    }
+
+    class Inventario {
+        + idInventario: Long
+        + nombre: String
+        + categoria: String
+        + cantidad: int
+        + unidadMedida: String
+        + precioUnitario: double
+    }
+
+    class Menu {
+        + idMenu: Long
+        + nombre: String
+        + entrante: String
+        + principal: String
+        + postre: String
+        + bebida: String
+        + vecesPedidas: int
+        + precio: double
+        + ingredientes: String
+    }
+
+    class Pedido {
+        + id: Long
+        + idPlato: Long
+        + nombrePlato: String
+        + precio: double
+    }
+
+    class Plato {
+        + id_plato: Long
+        + nombre: String
+        + descripcion: String
+        + precio: double
+        + tipo: String
+        + imagen: String
+        + ingredientes: String
+    }
+
+    class Usuario {
+        + id: Long
+        + username: String
+        + email: String
+        + password: String
+    }
+}
+
+package "Repositorios" {
+    interface DetallePedidoRepository
+    interface IngredienteUsadoRepository
+    interface InventarioRepository
+    interface MenuRepository
+    interface PedidoRepository
+    interface PlatoRepository
+    interface UsuarioRepository
+}
+
+package "Servicios" {
+    class DetallePedidoService
+    class EmailService
+    class IngredienteUsadoService
+    class InventarioService
+    class MenuService
+    class PedidoService
+    class PlatoService
+    interface VerificationCodeService
+}
+
+DetallePedidoRepository ..> DetallePedido
+IngredienteUsadoRepository ..> IngredienteUsado
+InventarioRepository ..> Inventario
+MenuRepository ..> Menu
+PedidoRepository ..> Pedido
+PlatoRepository ..> Plato
+UsuarioRepository ..> Usuario
+
+DetallePedidoService --> DetallePedidoRepository
+DetallePedidoService --> EmailService
+
+IngredienteUsadoService --> IngredienteUsadoRepository
+IngredienteUsadoService --> InventarioService
+
+InventarioService --> InventarioRepository
+InventarioService --> EmailService
+
+MenuService --> MenuRepository
+
+PedidoService --> PedidoRepository
+
+PlatoService --> PlatoRepository
+PlatoService --> IngredienteUsadoService
+
+UsuarioService --> UsuarioRepository
+UsuarioService --> EmailService
+UsuarioService ..> VerificationCodeService
+
+@enduml

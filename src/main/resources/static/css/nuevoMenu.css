@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding: 0 20px;
+}
+
+.lottie-animation {
+    width: 30%;
+    max-width: 400px;
+    height: auto;
+}
+
+.form-container {
+    width: 40%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: lightblue;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    background-image: url("../img/log.jpg");
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-repeat: no-repeat; /
+}
+h1{
+    text-align: center;
+    color: lightblue;
+}

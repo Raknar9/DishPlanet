@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/head::encabezado(~{::title}, ~{::link})}">
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet"  type="text/css" th:href="@{/css/generalLogForm.css}">
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+</head>
+<body>
+<nav th:replace="~{fragments/barraMenu::barraMenu}"></nav>
+<div class="login-wrapper">
+    <div class="container">
+        <h1>Login</h1>
+        <form th:action="@{/usuario/login}" method="post">
+            <div class="email">
+                <input type="text" name="username" placeholder="Usuario" required>
+                <i class="lnr lnr-user"></i>
+            </div>
+            <div class="password">
+                <input type="password" name="password" placeholder="Contraseña" required>
+                <i class="lnr lnr-lock"></i>
+            </div>
+            <button type="submit" class="btn">Login</button>
+            <div class="signup-link">
+                <a th:href="@{/usuario/signup}">Signup</a>
+            </div>
+            <div class="forgot-password-link">
+                <a th:href="@{/usuario/forgotPassword}">Olvidé mi contraseña</a>
+            </div>
+            <div th:if="${error}" class="error">
+                <p th:text="${error}"></p>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script th:src="@{/js/Utils.js}"></script>
+<script th:src="@{/js/ajax.js}"></script>
+</body>
+</html>

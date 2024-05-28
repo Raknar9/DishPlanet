@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  mysqlPlato:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydb
+    volumes:
+      - ./mysql-init:/docker-entrypoint-initdb.d # Carpeta con scripts de inicialización
+      - ./mysql-data:/var/lib/mysql # Volumen para persistir datos de MySQL
+    ports:
+      - "3306:3306" # Exponer el puerto MySQL
+    networks:
+      - mynetwork
+
+  myapp:
+    build:
+      context: .
+      dockerfile: Dockerfile # Asegúrate de que el nombre del Dockerfile es correcto
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqlPlato:3306/mydb
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+
+    ports:
+      - "8080:8080" # Mapea el puerto de la aplicación al puerto 8080 en el host
+    networks:
+      - mynetwork
+
+volumes:
+  mysql-data:
+
+networks:
+  mynetwork:
+    driver: bridge
+
+

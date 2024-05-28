@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head::encabezado(~{::title}, ~{::link})}">
+    <meta charset="UTF-8">
+    <title>Inventario</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/inventario.css}">
+
+</head>
+<body>
+<nav th:replace="~{fragments/barraMenu::barraMenu}"></nav>
+<h1>Inventario</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Categoría</th>
+        <th>Cantidad</th>
+        <th>Unidad de Medida</th>
+        <th>Precio Unitario</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="inventario : ${inventarios}">
+        <td th:text="${inventario.nombre}"></td>
+        <td th:text="${inventario.categoria}"></td>
+        <td>
+            <form th:action="@{/inventario/actualizar}" method="post">
+                <input type="hidden" name="id" th:value="${inventario.idInventario}">
+                <input type="number" name="cantidad" th:value="${inventario.cantidad}" required>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+        </td>
+        <td th:text="${inventario.unidadMedida}"></td>
+        <td th:text="${inventario.precioUnitario} + ' €'"></td>
+    </tr>
+    </tbody>
+</table>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script th:src="@{/js/inventario.js}"></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.orange-yellow {
+    text-align: center;
+    color: #FFA500;
+    text-shadow: 2px 2px 6px rgba(255, 255, 0, 0.7), -2px -2px 6px rgba(255, 165, 0, 0.7);
+}
+
+/* Background Image */
+.background-image {
+    background-image: url('../img/log.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Container Styles */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.content-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+
+.text-box {
+    flex-basis: 45%;
+    padding: 20px;
+}
+
+.info-box {
+    background-color: #fff;
+    border: 2px solid #FFA500;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Image Slider Styles */
+.image-slider {
+    overflow: hidden;
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+
+.image-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.image-slider img.active {
+    opacity: 1;
+}
+
+/* Top Menus Section */
+
+
+.menus-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.menu-box {
+    background-color:gray;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.menu-box:hover {
+    transform: scale(1.05);
+}
+
+.menu-box h3 {
+    color: #333;
+}
+
+.menu-box p {
+    color: #555;
+    margin: 5px 0;
+}
+
+/* Animation Styles */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.animate__animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.animate__fadeIn {
+    animation-name: fadeIn;
+}
+
+.animation-box {
+    flex-basis: 45%;
+    padding: 20px;
+    background-color: #fff;
+    border: 2px solid #FFA500;
+    border-radius: 10px;
+}
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head::encabezado(~{::title}, ~{::link})}">
+  <title>Historial</title>
+  <link rel="stylesheet" th:href="@{/css/historial.css}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+
+  </style>
+</head>
+<body>
+<nav th:replace="~{fragments/barraMenu::barraMenu}"></nav>
+<h1>Historial de Pedidos</h1>
+<div class="table-container">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Nombre del Plato</th>
+      <th>Precio</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pedido : ${pedidos}">
+      <td data-label="Nombre del Plato" th:text="${pedido.nombrePlato}"></td>
+      <td data-label="Precio" th:text="${pedido.precio}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
