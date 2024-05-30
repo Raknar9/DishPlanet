@@ -71,23 +71,12 @@ public class PlatoController {
 
         return "platos/bebidas";
     }
-    @GetMapping("/nuevo")
-    public String mostrarFormularioNuevoPlato() {
-        return "nuevos/nuevoPlato";
-    }
-
     @PostMapping("/guardar")
     public String guardarNuevoPlato(@RequestParam("nombre") String nombre,
                                     @RequestParam("descripcion") String descripcion,
                                     @RequestParam("precio") double precio,
                                     @RequestParam("tipo") String tipo) throws IOException {
 
-        // Guardar la imagen en el directorio
-       // if (!imagen.isEmpty()) {
-          //  byte[] bytes = imagen.getBytes();
-          //  Path path = Paths.get(imagesDirectory, imagen.getOriginalFilename());
-           // Files.write(path, bytes);
-       // }
 
         // Guardar el plato en la base de datos con la ruta de la imagen
         Plato plato = new Plato();
@@ -98,11 +87,6 @@ public class PlatoController {
         plato.setImagen("/img/new.jpg" ); // Ruta relativa a la imagen
         platoService.savePlatos(plato);
 
-        return "redirect:/plato/principales";
-    }
-    @PostMapping("/eliminar")
-    public String eliminarPlato(@RequestParam String nombre) {
-        platoService.deleteByNombre(nombre);
         return "redirect:/plato/principales";
     }
 

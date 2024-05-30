@@ -57,4 +57,7 @@ public class PlatoService {
        // log.info("'borra el plato "+plato.get().getNombre());
         plato.ifPresent(platoRepository::delete);
     }
+    public boolean existsByNombre(String nombre) {
+        return platoRepository.existsByNombre(nombre);
+    }
 }

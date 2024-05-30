@@ -9,7 +9,7 @@
 <body>
 <nav th:replace="~{fragments/barraMenu::barraMenu}"></nav>
 <h1>Inventario</h1>
-<table>
+<table th:if="${#authentication.name == 'admin'}">
     <thead>
     <tr>
         <th>Nombre</th>

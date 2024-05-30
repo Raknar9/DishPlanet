@@ -50,5 +50,8 @@ public class MenuService {
         // log.info("'borra el plato "+plato.get().getNombre());
         menu.ifPresent(menuRepository::delete);
     }
+    public boolean existsByNombre(String nombre) {
+        return menuRepository.existsByNombre(nombre);
+    }
 }
 

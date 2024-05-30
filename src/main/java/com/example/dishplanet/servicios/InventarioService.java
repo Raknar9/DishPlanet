@@ -70,4 +70,7 @@ public class InventarioService {
             emailService.sendEmail("alejanbenitez.002@gmail.com", "Alerta de Inventario", mensaje.toString());
         }
     }
+    public boolean existsByNombre(String nombre) {
+        return inventarioRepository.existsByNombre(nombre);
+    }
 }

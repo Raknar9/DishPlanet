@@ -55,3 +55,7 @@ body {
     border-color: darkorange; /* Cambio de color del borde del botón secundario al pasar el mouse a un tono más oscuro de naranja */
 }
 h1,h2{color: yellow}
+.error {
+    color: red;
+    font-size: 0.9em;
+}

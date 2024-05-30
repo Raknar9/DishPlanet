@@ -270,9 +270,5 @@ public class PedidoController {
         model.addAttribute("message", "El recibo ha sido enviado a " + email);
         return  "redirect:/pedido/fin";
     }
-    @GetMapping("/informePedidos")
-    public void generarInformePedidos(HttpServletResponse response) throws IOException {
-        detallePedidoService.generarInformePedidos(response);
-    }
 
 }

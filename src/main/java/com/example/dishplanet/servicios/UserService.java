@@ -1,10 +1,9 @@
 package com.example.dishplanet.servicios;
 
-import com.example.dishplanet.entidades.DetallePedido;
-import com.example.dishplanet.entidades.Plato;
 import com.example.dishplanet.entidades.Usuario;
 import com.example.dishplanet.repositorios.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,7 +14,7 @@ import org.webjars.NotFoundException;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
-
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class UserService {
@@ -64,5 +63,27 @@ public class UserService {
     public String generateVerificationCode() {
         return String.valueOf(new Random().nextInt(900000) + 100000);
     }
+    public boolean isAdmin(Authentication authentication) {
+        boolean ok = false;
+        if (authentication == null) {
+            ok=false;
+            // Si la autenticación es nula, no es administrador
+        }
+       
+        Object principal = authentication.getPrincipal();
+        if (principal instanceof UserDetails) {
+            // Obtener detalles del usuario
+            UserDetails userDetails = (UserDetails) principal;
+            String username = userDetails.getUsername();
 
+            if ("admin".equals(username)) {
+                log.info(username);
+                ok=true;
+            }else {
+                ok=false;
+            }
+        }
+
+        return ok;
+    }
 }

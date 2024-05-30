@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{fragments/head::encabezado(~{::title}, ~{::link})}">
     <meta charset="UTF-8">
     <title>Panel</title>
@@ -8,34 +9,34 @@
 </head>
 <body>
 <nav th:replace="~{fragments/barraMenu::barraMenu}"></nav>
-<div class="container" id="container">
+<div class="container" id="container" th:if="${#authentication.name == 'admin'}">
     <div class="section" id="add-view-section">
         <h2>Ver / Añadir</h2>
         <div class="action-row">
             <div class="action-container">
                 <div class="lottie-animation" id="add-menu-animation"></div>
-                <form th:action="@{/menu/nuevo}" method="Get">
+                <form th:action="@{/panel/menu/nuevo}" method="get">
                     <button type="submit" class="btn btn-primary">Nuevo Menu</button>
                 </form>
             </div>
 
             <div class="action-container">
                 <div class="lottie-animation" id="add-dish-animation"></div>
-                <form th:action="@{/plato/nuevo}" method="Get">
+                <form th:action="@{/panel/plato/nuevo}" method="get">
                     <button type="submit" class="btn btn-primary">Nuevo Plato</button>
                 </form>
             </div>
 
             <div class="action-container">
                 <div class="lottie-animation" id="view-inventory-animation"></div>
-                <form th:action="@{/inventario}" method="Get">
+                <form th:action="@{/inventario}" method="get">
                     <button type="submit" class="btn btn-primary">Inventario</button>
                 </form>
             </div>
 
             <div class="action-container">
                 <div class="lottie-animation" id="add-inventory-item-animation"></div>
-                <form th:action="@{/inventario/nuevo}" method="Get">
+                <form th:action="@{/inventario/nuevo}" method="get">
                     <button type="submit" class="btn btn-primary">Nuevo item a Inventario</button>
                 </form>
             </div>
@@ -49,10 +50,11 @@
         <div class="action-row">
             <div class="action-container">
                 <div class="lottie-animation" id="delete-dish-animation"></div>
-                <form th:action="@{/plato/eliminar}" method="Post">
+                <form th:action="@{/panel/plato/eliminar}" method="post" id="eliminarPlatoForm">
                     <div class="form-group">
                         <label for="nombre">Plato a Eliminar:</label>
                         <input type="text" id="nombre" name="nombre" class="form-control" required>
+                        <span class="error" id="errorNombre"></span>
                     </div>
                     <button type="submit" class="btn btn-danger">Eliminar Plato</button>
                 </form>
@@ -60,33 +62,36 @@
 
             <div class="action-container">
                 <div class="lottie-animation" id="delete-menu-animation"></div>
-                <form th:action="@{/menu/eliminar}" method="Post">
+                <form th:action="@{/panel/menu/eliminar}" method="post" id="eliminarMenuForm">
                     <div class="form-group">
-                        <label for="nombreMenu">Menu a Eliminar:</label>
+                        <label for="nombreMenu">Menú a Eliminar:</label>
                         <input type="text" id="nombreMenu" name="nombreMenu" class="form-control" required>
+                        <span class="error" id="errorNombreMenu"></span>
                     </div>
-                    <button type="submit" class="btn btn-danger">Eliminar Menu</button>
+                    <button type="submit" class="btn btn-danger">Eliminar Menú</button>
                 </form>
             </div>
 
             <div class="action-container">
                 <div class="lottie-animation" id="delete-item-animation"></div>
-                <form th:action="@{/eliminar}" method="Post">
+                <form th:action="@{/eliminar}" method="post" id="eliminarItemForm">
                     <div class="form-group">
                         <label for="nombreItem">Item a Eliminar:</label>
                         <input type="text" id="nombreItem" name="nombreItem" class="form-control" required>
+                        <span class="error" id="errorNombreItem"></span>
                     </div>
                     <button type="submit" class="btn btn-danger">Eliminar Item</button>
                 </form>
             </div>
         </div>
     </div>
+
     <div class="section" id="informe-section">
         <h2>Informes</h2>
         <div class="action-row">
             <div class="action-container">
                 <div class="lottie-animation" id="informe-pedidos-animation"></div>
-                <form th:action="@{pedido/informePedidos}" method="GET">
+                <form th:action="@{/panel/pedido/informePedidos}" method="get">
                     <button type="submit" class="btn btn-success">Generar Informe de Pedidos</button>
                 </form>
             </div>
@@ -96,6 +101,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
 <script th:src="@{/js/controlPanel.js}"></script>
+<script th:src="@{/js/validaciones.js}"></script>
 </body>
 </html>
 

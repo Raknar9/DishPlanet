@@ -355,5 +355,6 @@ INSERT INTO Inventario (nombre, categoria, cantidad, unidad_medida, precio_unita
 
 
 -- Inserts iniciales para lod usuarios default
-INSERT INTO Usuario (username, email, password) VALUES
-    ('admin', 'aguilejan99@gmail.com', '$2a$10$zj0hCde7K9NkhCsAPtbjQu5Romm7uqJSmYf7eYq0N3x/eaX0Xhi9m');
+INSERT INTO Usuario (username, email, password)
+VALUES ('admin', 'aguilejan99@gmail.com', '$2a$10$zj0hCde7K9NkhCsAPtbjQu5Romm7uqJSmYf7eYq0N3x/eaX0Xhi9m');
+

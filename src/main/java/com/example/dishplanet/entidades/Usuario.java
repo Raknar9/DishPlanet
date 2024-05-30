@@ -24,12 +24,14 @@ public class Usuario {
     @Column(name = "id_user")
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(name = "username",nullable = false, unique = true)
     private String username;
 
-    @Column(nullable = false, unique = true)
+    @Column(name = "email",nullable = false, unique = true)
     private String email;
+    @Column(name = "password")
     private String password;
+
 
 
 

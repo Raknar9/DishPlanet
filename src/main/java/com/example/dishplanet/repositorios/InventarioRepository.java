@@ -8,4 +8,5 @@ import java.util.Optional;
 
 public interface InventarioRepository extends JpaRepository<Inventario,Long> {
     Optional<Inventario> findByNombre(String nombre);
+    boolean existsByNombre(String nombre);
 }

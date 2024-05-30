@@ -32,19 +32,16 @@ public class MenuCotroller {
     @Autowired
     private IngredienteUsadoService ingredienteUsadoService;
 
-    @GetMapping("/api/menus")
-    public List<Menu> getAllMenus() {
-        return menuService.getAllMenus();
-    }
+
 
     @GetMapping("/menus")
-    public String showPedidosPage(Model model) {
+    public String showMenuPage(Model model) {
         model.addAttribute("menus", menuService.getAllMenus());
         return "platos/menus";
     }
 
     @PostMapping("/menus")
-    public String addPedido(@RequestParam("menuId") Long menuId, Model model, HttpServletResponse response) {
+    public String addMenu(@RequestParam("menuId") Long menuId, Model model, HttpServletResponse response) {
         Menu menu = menuService.getMenuById(menuId);
         if (menu != null) {
             Pedido pedido = new Pedido();
@@ -75,21 +72,11 @@ public class MenuCotroller {
         }
         return "redirect:/menu/menus";
     }
-
-    @GetMapping("/nuevo")
-    public String mostrarFormularioNuevoMenu(Model model) {
-        model.addAttribute("menu", new Menu());
-        return "nuevos/nuevoMenu";
-    }
-
     @PostMapping("/guardar")
     public String guardarMenu(@ModelAttribute("menu") Menu menu) {
         menuService.guardarMenu(menu);
         return "redirect:/menu/menus";
     }
-    @PostMapping("/eliminar")
-    public String eliminarMenu(@RequestParam String nombreMenu) {
-        menuService.deleteByNombre(nombreMenu);
-        return "redirect:/menu/menus";
-    }
+
+
 }

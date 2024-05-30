@@ -13,17 +13,27 @@
   </div>
   <div class="form-container">
     <h1>Nuevo Item</h1>
-    <form th:action="@{/inventario/guardar}" method="post" th:object="${inventario}">
+    <form th:action="@{/inventario/guardar}" method="post" th:object="${inventario}" id="inventarioForm">
       <label>Nombre:</label>
-      <input type="text" th:field="*{nombre}" required><br>
+      <input type="text" th:field="*{nombre}" id="nombre" required>
+      <span class="error" id="errorNombre"></span><br>
+
       <label>Categoría:</label>
-      <input type="text" th:field="*{categoria}" required><br>
+      <input type="text" th:field="*{categoria}" id="categoria" required>
+      <span class="error" id="errorCategoria"></span><br>
+
       <label>Cantidad:</label>
-      <input type="number" th:field="*{cantidad}" required min="0"><br>
+      <input type="number" th:field="*{cantidad}" id="cantidad" required min="0">
+      <span class="error" id="errorCantidad"></span><br>
+
       <label>Unidad de Medida:</label>
-      <input type="text" th:field="*{unidadMedida}" required><br>
+      <input type="text" th:field="*{unidadMedida}" id="unidadMedida" required>
+      <span class="error" id="errorUnidadMedida"></span><br>
+
       <label>Precio Unitario:</label>
-      <input type="number" step="0.01" th:field="*{precioUnitario}" required><br>
+      <input type="number" step="0.01" th:field="*{precioUnitario}" id="precioUnitario" required>
+      <span class="error" id="errorPrecioUnitario"></span><br>
+
       <button type="submit">Guardar</button>
     </form>
   </div>
@@ -33,6 +43,7 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.11/lottie_svg.min.js"></script>
 <script th:src="@{/js/nuevoMenuAnimation.js}"></script>
+<script th:src="@{/js/validaciones.js}"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 </body>

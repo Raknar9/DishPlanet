@@ -17,4 +17,5 @@ public interface MenuRepository extends JpaRepository<Menu,Long> {
     List<Menu> findTop3ByOrderByVecesPedidasDesc();
 
     Optional<Menu> findByNombre(String nombre);
+    boolean existsByNombre(String nombre);
 }

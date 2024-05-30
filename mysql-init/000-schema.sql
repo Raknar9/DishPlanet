@@ -1,10 +1,11 @@
-CREATE TABLE Usuario(
-                        id_user INT AUTO_INCREMENT PRIMARY KEY ,
-                        username VARCHAR(255) ,
-                        email VARCHAR(255)  UNIQUE,
-                        password VARCHAR(255)
-
+CREATE TABLE Usuario (
+                      id_user INT AUTO_INCREMENT PRIMARY KEY,
+                      username VARCHAR(255) NOT NULL UNIQUE,
+                      email VARCHAR(255) NOT NULL,
+                      password VARCHAR(255) NOT NULL
 );
+
+
 CREATE TABLE Plato (
                        id_plato INT PRIMARY KEY AUTO_INCREMENT,
                        nombre VARCHAR(255),

@@ -23,4 +23,5 @@ public interface PlatoRepository extends JpaRepository<Plato,Long> {
     List<Plato> findAllEntrante();
     Optional<Plato> findByNombre(String nombre);
     void deleteByNombre(String nombre);
+    boolean existsByNombre(String nombre);
 }

@@ -13,20 +13,22 @@
   </div>
   <div class="form-container">
     <h1>Nuevo Plato</h1>
-    <form action="#" th:action="@{/plato/guardar}" method="post" enctype="multipart/form-data">
+    <form action="#" th:action="@{/plato/guardar}" method="post" enctype="multipart/form-data" id="platoForm">
       <label>Nombre:</label>
-      <input type="text" name="nombre" required><br>
+      <input type="text" name="nombre" id="nombre" required>
+      <span class="error" id="errorNombre"></span><br>
 
       <label>Descripción:</label>
-      <textarea name="descripcion" required></textarea><br>
+      <textarea name="descripcion" id="descripcion" required></textarea>
+      <span class="error" id="errorDescripcion"></span><br>
 
       <label>Precio:</label>
-      <input type="number" name="precio" step="0.01" required><br>
+      <input type="number" name="precio" id="precio" step="0.01" required>
+      <span class="error" id="errorPrecio"></span><br>
 
       <label>Tipo:</label>
-      <input type="text" name="tipo" required><br>
-
-
+      <input type="text" name="tipo" id="tipo" required>
+      <span class="error" id="errorTipo"></span><br>
 
       <button type="submit">Guardar</button>
     </form>
@@ -37,6 +39,7 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.11/lottie_svg.min.js"></script>
 <script th:src="@{/js/nuevoMenuAnimation.js}"></script>
+<script th:src="@{/js/validaciones.js}"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 </body>

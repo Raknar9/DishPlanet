@@ -25,8 +25,6 @@ public class SeguridadConfig {
     @Autowired
     private UserDetailsService userDetailsService;
 
-
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -59,5 +57,6 @@ public class SeguridadConfig {
 
         return http.build();
     }
+
 
 }
