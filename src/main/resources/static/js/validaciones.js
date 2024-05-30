@@ -236,3 +236,32 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+//validacion para si el usuario ya existe
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("registroForm");
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault(); // Previene el envío del formulario
+
+        const username = document.getElementById("username").value;
+        const errorUsername = document.getElementById("errorUsername");
+
+        // Limpiar el mensaje de error previo
+        errorUsername.innerText = "";
+
+        // Hacer la petición AJAX para verificar si el usuario existe
+        fetch(`/usuario/existe?username=${username}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.existe) {
+                    errorUsername.innerText = "El nombre de usuario ya existe.";
+                    errorUsername.style.color = "red";
+                } else {
+                    form.submit(); // Enviar el formulario si el usuario no existe
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+    });
+});

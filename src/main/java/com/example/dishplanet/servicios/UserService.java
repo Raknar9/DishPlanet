@@ -63,27 +63,8 @@ public class UserService {
     public String generateVerificationCode() {
         return String.valueOf(new Random().nextInt(900000) + 100000);
     }
-    public boolean isAdmin(Authentication authentication) {
-        boolean ok = false;
-        if (authentication == null) {
-            ok=false;
-            // Si la autenticación es nula, no es administrador
-        }
-       
-        Object principal = authentication.getPrincipal();
-        if (principal instanceof UserDetails) {
-            // Obtener detalles del usuario
-            UserDetails userDetails = (UserDetails) principal;
-            String username = userDetails.getUsername();
 
-            if ("admin".equals(username)) {
-                log.info(username);
-                ok=true;
-            }else {
-                ok=false;
-            }
-        }
-
-        return ok;
+    public boolean existsByUsername(String username) {
+        return userRepository.existsByUsername(username);
     }
 }

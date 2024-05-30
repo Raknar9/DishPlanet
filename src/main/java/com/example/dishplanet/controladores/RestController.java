@@ -3,6 +3,7 @@ package com.example.dishplanet.controladores;
 import com.example.dishplanet.servicios.InventarioService;
 import com.example.dishplanet.servicios.MenuService;
 import com.example.dishplanet.servicios.PlatoService;
+import com.example.dishplanet.servicios.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +20,8 @@ public class RestController {
     private PlatoService platoService;
     @Autowired
     private InventarioService inventarioService;
+    @Autowired
+    private UserService usuarioService;
     @GetMapping("/item/existe")
     @ResponseBody
     public Map<String, Boolean> existeItem(@RequestParam String nombreItem) {
@@ -37,6 +40,12 @@ public class RestController {
     @ResponseBody
     public Map<String, Boolean> existeMenu(@RequestParam String nombreMenu) {
         boolean exists = menuService.existsByNombre(nombreMenu);
+        return Collections.singletonMap("existe", exists);
+    }
+    @GetMapping("/usuario/existe")
+    @ResponseBody
+    public Map<String, Boolean> existeUsuario(@RequestParam String username) {
+        boolean exists = usuarioService.existsByUsername(username);
         return Collections.singletonMap("existe", exists);
     }
 }
