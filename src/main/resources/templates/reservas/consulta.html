@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head::encabezado(~{::title}, ~{::link})}">
+  <meta charset="UTF-8">
+  <title>Consultar Reservas</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/reservas.css}">
+</head>
+<nav th:replace="~{fragments/barraMenu::barraMenu}"></nav>
+<body>
+
+<div class="container">
+  <br><br>
+  <h1>Consultar Reservas</h1>
+
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Usuario</th>
+      <th>Fecha y Hora</th>
+      <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody id="reservasTable">
+    <tr th:each="reserva : ${reservas}">
+      <td th:text="${reserva.id}" class="reserva-id"></td>
+      <td th:text="${reserva.usuario.username}" class="reserva-usuario"></td>
+      <td th:text="${reserva.fechaHora}"></td>
+      <td>
+        <form th:action="@{/cancelar-reserva}" method="post">
+          <input type="hidden" name="id" th:value="${reserva.id}">
+          <button type="submit" class="btn-primary">Cancelar</button>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script th:src="@{/js/reservas.js}"></script>
+</body>
+</html>
+

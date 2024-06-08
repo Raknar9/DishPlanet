@@ -1,7 +1,6 @@
 package com.example.dishplanet.servicios;
 
 import com.example.dishplanet.entidades.Inventario;
-import com.example.dishplanet.entidades.Menu;
 import com.example.dishplanet.repositorios.InventarioRepository;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
@@ -10,18 +9,15 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
 @Slf4j
 @Service
 public class InventarioService {
-
     @Autowired
     private InventarioRepository inventarioRepository;
     @Autowired
     private EmailService emailService;
 
-    public List<Inventario> obtenerInventario() {
-        return inventarioRepository.findAll();
-    }
     public void guardarInventario(Inventario inventario) {
         inventarioRepository.save(inventario);
     }
@@ -31,6 +27,7 @@ public class InventarioService {
         inventario.setCantidad(cantidad);
         inventarioRepository.save(inventario);
     }
+
     @Transactional
     public void updateInventario(String nombreIngrediente) {
         Optional<Inventario> inventarioOpt = inventarioRepository.findByNombre(nombreIngrediente);
@@ -38,14 +35,16 @@ public class InventarioService {
             Inventario inventario = inventarioOpt.get();
             inventario.setCantidad(inventario.getCantidad() - 1);
             inventarioRepository.save(inventario);
+
         }
     }
+
     @Transactional
     public void deleteByNombre(String nombre) {
         Optional<Inventario> inventario = inventarioRepository.findByNombre(nombre);
-        // log.info("'borra el plato "+plato.get().getNombre());
         inventario.ifPresent(inventarioRepository::delete);
     }
+
     @Transactional
     public void revisarYActualizarInventario() {
         List<Inventario> items = inventarioRepository.findAll();
@@ -70,6 +69,15 @@ public class InventarioService {
             emailService.sendEmail("alejanbenitez.002@gmail.com", "Alerta de Inventario", mensaje.toString());
         }
     }
+
+    public List<Inventario> listarInventarios() {
+        return inventarioRepository.findAll();
+    }
+
+    public List<Inventario> buscarInventarios(String search) {
+        return inventarioRepository.findByNombreContainingIgnoreCaseOrCategoriaContainingIgnoreCase(search, search);
+    }
+
     public boolean existsByNombre(String nombre) {
         return inventarioRepository.existsByNombre(nombre);
     }

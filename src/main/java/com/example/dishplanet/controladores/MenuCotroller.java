@@ -12,27 +12,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.List;
+
 
 @Controller
 @RequestMapping("/menu")
 public class MenuCotroller {
     @Autowired
     private MenuService menuService;
-
     @Autowired
     private PedidoService pedidoService;
-
     @Autowired
     private InventarioService inventarioService;
-
     @Autowired
     private IngredienteUsadoService ingredienteUsadoService;
-
-
 
     @GetMapping("/menus")
     public String showMenuPage(Model model) {
@@ -41,22 +35,17 @@ public class MenuCotroller {
     }
 
     @PostMapping("/menus")
-    public String addMenu(@RequestParam("menuId") Long menuId, Model model, HttpServletResponse response) {
+    public String addMenu(@RequestParam("menuId") Long menuId, HttpServletResponse response) {
         Menu menu = menuService.getMenuById(menuId);
         if (menu != null) {
             Pedido pedido = new Pedido();
-            pedido.setIdPlato(menu.getIdMenu());
+            pedido.setIdMenu(menu.getIdMenu());
             pedido.setNombrePlato(menu.getNombre());
             pedido.setPrecio(menu.getPrecio());
-
-            // Save the pedido
             pedidoService.guardarPedido(pedido);
-
-            // Increment the vecesPedidas count
             menuService.incrementMenuCount(menuId);
             ingredienteUsadoService.saveIngredientesUsadosMenu(menu);
             inventarioService.revisarYActualizarInventario();
-            //
             try {
                 // Codificar el valor de la cookie
                 String cookieValue = menuId + "|" + menu.getNombre() + "|" + menu.getPrecio();
@@ -72,11 +61,10 @@ public class MenuCotroller {
         }
         return "redirect:/menu/menus";
     }
+
     @PostMapping("/guardar")
     public String guardarMenu(@ModelAttribute("menu") Menu menu) {
         menuService.guardarMenu(menu);
         return "redirect:/menu/menus";
     }
-
-
 }

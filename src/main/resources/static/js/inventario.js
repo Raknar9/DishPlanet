@@ -1,13 +1,20 @@
-function incrementarCantidad(button) {
-    let cantidadInput = $(button).closest('tr').find('input[name="cantidad"]');
-    let cantidadActual = parseInt(cantidadInput.val());
-    cantidadInput.val(cantidadActual + 10);
-}
+$(document).ready(function() {
+    let search = document.querySelector('.search');
+    let close = document.querySelector('.close');
+    let searchBox = document.querySelector('.searchBox');
 
-function decrementarCantidad(button) {
-    let cantidadInput = $(button).closest('tr').find('input[name="cantidad"]');
-    let cantidadActual = parseInt(cantidadInput.val());
-    if (cantidadActual > 0) {
-        cantidadInput.val(cantidadActual - 10);
+    search.onclick = function() {
+        searchBox.classList.add('active');
     }
-}
+
+    close.onclick = function() {
+        searchBox.classList.remove('active');
+    }
+
+    $("#searchInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#inventarioTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+});

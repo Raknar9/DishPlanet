@@ -8,29 +8,28 @@
 <nav th:replace="~{fragments/barraMenu::barraMenu}"></nav>
 
 <div class="background-image">
+  <div class="welcome-box">
+    <div class="info-box">
+      <h1 class="orange-yellow">DISH PLANET</h1>
+      <h3 class="orange-yellow">Restaurante con la mejor calidad</h3>
+    </div>
+  </div>
   <div class="container">
     <div class="content-box">
-      <div class="text-box">
-        <div class="info-box">
-          <h1 class="orange-yellow">DISH PLANET</h1>
-          <h3 class="orange-yellow">Restaurante con la mejor calidad</h3>
-        </div>
-        <div class="image-slider">
-          <img th:src="@{/img/inicio1.jpg}" alt="Imagen 1">
-          <img th:src="@{/img/inicio2.jpg}" alt="Imagen 2">
-          <img th:src="@{/img/inicio3.jpg}" alt="Imagen 3">
-          <img th:src="@{/img/inicio4.jpg}" alt="Imagen 4">
-        </div>
+      <div class="image-slider">
+        <img th:src="@{/img/inicio1.jpg}" alt="Imagen 1" class="active">
+        <img th:src="@{/img/inicio2.jpg}" alt="Imagen 2">
+        <img th:src="@{/img/inicio3.jpg}" alt="Imagen 3">
+        <img th:src="@{/img/inicio4.jpg}" alt="Imagen 4">
       </div>
       <div class="animation-box">
 
       </div>
-
     </div>
   </div>
-  <h2 class="orange-yellow">Menús Más Pedidos</h2>
+  <h2 class="orange-yellow">Éxitos</h2>
   <div class="menus-container">
-    <div th:each="menu : ${topMenus}" class="menu-box animate__animated animate__fadeIn" >
+    <div th:each="menu : ${topMenus}" class="menu-box animate__animated animate__fadeIn">
       <h3 th:text="${menu.nombre}"></h3>
       <p><strong>Entrante:</strong> <span th:text="${menu.entrante}"></span></p>
       <p><strong>Principal:</strong> <span th:text="${menu.principal}"></span></p>
@@ -40,7 +39,6 @@
     </div>
   </div>
 </div>
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.12/lottie.min.js"></script>
 <script th:src="@{/js/index.js}"></script>

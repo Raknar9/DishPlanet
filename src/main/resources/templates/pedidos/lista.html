@@ -43,6 +43,10 @@
                         <th>IVA (10%)</th>
                         <td th:text="'€ ' + ${iva}"></td>
                     </tr>
+                    <tr th:if="${descuento != '0.00'}">
+                        <th>Descuento (15%)</th>
+                        <td th:text="'- € ' + ${descuento}"></td>
+                    </tr>
                     <tr>
                         <th>Total</th>
                         <td th:text="'€ ' + ${total}"></td>

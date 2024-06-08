@@ -8,7 +8,6 @@ import java.util.Map;
 
 @Service
 public class VerificationCodeServiceImpl implements VerificationCodeService {
-
     private final Map<String, String> verificationCodes = new HashMap<>();
 
     @Override

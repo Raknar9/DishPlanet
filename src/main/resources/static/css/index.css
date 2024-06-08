@@ -41,7 +41,7 @@ body {
 }
 
 .text-box {
-    flex-basis: 45%;
+    flex-basis: 60%; /* Ajustar para dar más espacio al slider */
     padding: 20px;
 }
 
@@ -59,6 +59,8 @@ body {
     width: 100%;
     height: 400px;
     position: relative;
+    border: 2px solid #FFA500; /* Añadir borde para resaltar */
+    border-radius: 10px;
 }
 
 .image-slider img {
@@ -77,8 +79,6 @@ body {
 }
 
 /* Top Menus Section */
-
-
 .menus-container {
     display: flex;
     justify-content: center;
@@ -87,19 +87,20 @@ body {
 }
 
 .menu-box {
-    background-color:gray;
-    border: 1px solid #ddd;
+    background-color: #f0f0f0; /* Cambiar a un color más claro */
+    border: 2px solid #FFA500; /* Resaltar con un borde */
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin: 10px;
     padding: 20px;
     width: 250px;
     text-align: center;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .menu-box:hover {
     transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añadir sombra en el hover */
 }
 
 .menu-box h3 {
@@ -131,10 +132,10 @@ body {
 }
 
 .animation-box {
-    flex-basis: 45%;
-    padding: 20px;
+    flex-basis: 30%; /* Reducir tamaño */
+    padding: 10px; /* Reducir padding */
     background-color: #fff;
-    border: 2px solid #FFA500;
-    border-radius: 10px;
+    border: 1px solid #ddd; /* Hacer borde menos prominente */
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Menos sombra */
 }
-

@@ -9,22 +9,23 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
 @Slf4j
 @Service
 public class PlatoService {
-
     @Autowired
     private PlatoRepository platoRepository;
-
     @Autowired
-    private IngredienteUsadoService ingredienteUsadoService ;
+    private IngredienteUsadoService ingredienteUsadoService;
 
     public List<Plato> getAllPlatos() {
         return platoRepository.findAll();
     }
+
     public void savePlatos(Plato plato) {
         platoRepository.save(plato);
     }
+
     public List<Plato> obtenerPostres() {
         return platoRepository.findAllPostres();
     }
@@ -42,21 +43,17 @@ public class PlatoService {
     }
 
     public Optional<Plato> buscarPorId(Long id) {
-        Optional plato=platoRepository.findById(id);
+        Optional plato = platoRepository.findById(id);
         return plato;
     }
-    @Transactional
-    public Plato savePlato(Plato plato) {
-        Plato savedPlato = platoRepository.save(plato);
-        ingredienteUsadoService.saveIngredientesUsados(savedPlato);
-        return savedPlato;
-    }
+
     @Transactional
     public void deleteByNombre(String nombre) {
         Optional<Plato> plato = platoRepository.findByNombre(nombre);
-       // log.info("'borra el plato "+plato.get().getNombre());
+        // log.info("'borra el plato "+plato.get().getNombre());
         plato.ifPresent(platoRepository::delete);
     }
+
     public boolean existsByNombre(String nombre) {
         return platoRepository.existsByNombre(nombre);
     }

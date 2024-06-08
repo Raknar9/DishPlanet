@@ -1,6 +1,5 @@
 
 
-
 //Animaciones
 let addMenuAnimation = lottie.loadAnimation({
     container: document.getElementById('add-menu-animation'),

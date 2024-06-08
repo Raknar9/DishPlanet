@@ -25,15 +25,12 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
     @Autowired
     private EmailService emailService;
-
     @Autowired
     private VerificationCodeServiceImpl verificationCodeService;
-
 
     @GetMapping("/login")
     public String login(@RequestParam(value = "error", required = false) String error,
                         Model model) {
-
         if (error != null) {
             model.addAttribute("error", "Credenciales inválidas. Por favor, intente nuevamente.");
         }
@@ -41,7 +38,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String loginp(){
+    public String loginp() {
         return "redirect:/principales";
     }
 
@@ -52,16 +49,16 @@ public class UserController {
         if (session != null) {
             session.invalidate();
         }
-
         // Establecer el nombre de usuario como "Invitado" en una nueva sesión
         SecurityContextHolder.clearContext();
-
-        return "redirect:/"; // Redirigir a la página de inicio u otra página después del logout
+        return "redirect:/";
     }
+
     @GetMapping("/signup")
     public String mostrarFormularioRegistro() {
         return "login/signup";
     }
+
     @PostMapping("/signup")
     public String registrarUsuario(@RequestParam("username") String username,
                                    @RequestParam("password") String password,
@@ -69,19 +66,14 @@ public class UserController {
                                    RedirectAttributes redirectAttributes) {
         // Encriptar la contraseña antes de guardarla en la base de datos
         String contraseñaEncriptada = passwordEncoder.encode(password);
-
         // Guardar el usuario en la base de datos
         Usuario usuario = new Usuario();
         usuario.setUsername(username);
         usuario.setPassword(contraseñaEncriptada);
         usuario.setEmail(email);
         usuarioService.guardarUsuario(usuario);
-
-        // Redirigir a la página de inicio de sesión con un mensaje de éxito
-        redirectAttributes.addFlashAttribute("mensaje", "¡Registro exitoso! Por favor, inicia sesión.");
         return "redirect:/usuario/login";
     }
-
 
     @GetMapping("/forgotPassword")
     public String showForgotPasswordForm() {
@@ -93,7 +85,7 @@ public class UserController {
         Usuario usuario = usuarioService.findByUsername(username);
         if (usuario != null) {
             String code = usuarioService.generateVerificationCode();
-            // Guarda el código de verificación en la base de datos
+            // Guarda el código de verificación un map
             verificationCodeService.saveVerificationCode(username, code);
             emailService.sendEmail(usuario.getEmail(), "Código de verificación", "Tu código de verificación es: " + code);
             // Aquí se redirige al usuario a la página donde ingresa el código de verificación
@@ -141,10 +133,6 @@ public class UserController {
             return "login/resetPassword";
         }
     }
-
-
-
-
 }
 
 

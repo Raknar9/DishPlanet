@@ -4,7 +4,7 @@ INSERT INTO Plato (nombre, descripcion, precio, tipo, imagen,ingredientes) VALUE
   'Tallarines fritos con repollo, pimientos, cebolla y pechuga de pollo Trozeada',
       10.99,
       'Principal',
-        '../img/fideosSalteados.jpg','Tomate,Cebolla,Pimientos Rojos,Porcion Fideos,Pimientos Verdes'
+        '/img/fideosSalteados.jpg','Tomate,Cebolla,Pimientos Rojos,Porcion Fideos,Pimientos Verdes'
                                   );
 
 INSERT INTO Plato (nombre, descripcion, precio, tipo, imagen,ingredientes) VALUES (

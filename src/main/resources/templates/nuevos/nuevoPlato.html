@@ -26,9 +26,17 @@
       <input type="number" name="precio" id="precio" step="0.01" required>
       <span class="error" id="errorPrecio"></span><br>
 
+      <label>Ingredientes:</label>
+      <textarea name="ingredientes" id="ingredientes" required></textarea>
+      <span class="error" id="errorIngredientes"></span><br>
+
       <label>Tipo:</label>
       <input type="text" name="tipo" id="tipo" required>
       <span class="error" id="errorTipo"></span><br>
+
+      <label>Imagen:</label>
+      <input type="file" name="imagen" id="imagen" accept="image/*" required>
+      <span class="error" id="errorImagen"></span><br>
 
       <button type="submit">Guardar</button>
     </form>

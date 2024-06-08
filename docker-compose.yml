@@ -7,24 +7,22 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: mydb
     volumes:
-      - ./mysql-init:/docker-entrypoint-initdb.d # Carpeta con scripts de inicialización
-      - ./mysql-data:/var/lib/mysql # Volumen para persistir datos de MySQL
+      - ./mysql-init:/docker-entrypoint-initdb.d # Folder with initialization scripts
+      - ./mysql-data:/var/lib/mysql # Volume to persist MySQL data
     ports:
-      - "3306:3306" # Exponer el puerto MySQL
+      - "3306:3306" # Expose MySQL port
     networks:
       - mynetwork
 
-  myapp:
+  tomcat:
     build:
       context: .
-      dockerfile: Dockerfile # Asegúrate de que el nombre del Dockerfile es correcto
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqlPlato:3306/mydb
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
+      dockerfile: Dockerfile # Dockerfile for Tomcat
 
     ports:
-      - "8080:8080" # Mapea el puerto de la aplicación al puerto 8080 en el host
+      - "8081:8080" # Map Tomcat's port to 8081 on the host
+    volumes:
+      - ./uploads:/uploads
     networks:
       - mynetwork
 
@@ -34,5 +32,4 @@ volumes:
 networks:
   mynetwork:
     driver: bridge
-
 

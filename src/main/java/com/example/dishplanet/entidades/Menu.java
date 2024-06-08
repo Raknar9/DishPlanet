@@ -1,6 +1,10 @@
 package com.example.dishplanet.entidades;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @Builder
@@ -16,28 +20,36 @@ public class Menu {
     @Column(name = "id_Menu")
     private Long idMenu;
 
-    @Column(name = "nombre")
+    @NotBlank(message = "El nombre es obligatorio")
+    @Size(max = 100, message = "El nombre no puede tener más de 100 caracteres")
+    @Column(name = "nombre", nullable = false)
     private String nombre;
 
-    @Column(name = "entrante")
+    @NotBlank(message = "El entrante es obligatorio")
+    @Column(name = "entrante", nullable = false)
     private String entrante;
 
-    @Column(name = "principal")
-    private String  principal;
+    @NotBlank(message = "El plato principal es obligatorio")
+    @Column(name = "principal", nullable = false)
+    private String principal;
 
-    @Column(name = "postre")
-    private String  postre;
+    @NotBlank(message = "El postre es obligatorio")
+    @Column(name = "postre", nullable = false)
+    private String postre;
 
-    @Column(name = "bebida")
-    private String  bebida;
+    @NotBlank(message = "La bebida es obligatoria")
+    @Column(name = "bebida", nullable = false)
+    private String bebida;
 
-    @Column(name = "veces_Pedidas")
+    @PositiveOrZero(message = "Las veces pedidas no pueden ser negativas")
+    @Column(name = "veces_Pedidas", nullable = false)
     private int vecesPedidas;
 
-    @Column(name = "precio")
+    @Positive(message = "El precio debe ser positivo")
+    @Column(name = "precio", nullable = false)
     private double precio;
 
+    @Size(max = 1000, message = "Los ingredientes no pueden tener más de 1000 caracteres")
     @Column(name = "ingredientes")
     private String ingredientes;
-
 }

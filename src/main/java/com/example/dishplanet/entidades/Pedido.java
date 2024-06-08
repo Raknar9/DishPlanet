@@ -3,8 +3,7 @@ package com.example.dishplanet.entidades;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Builder
 @Getter
@@ -21,6 +20,8 @@ public class Pedido {
 
     @Column(name = "id_plato")
     private Long idPlato;
+    @Column(name = "id_menu")
+    private Long idMenu;
 
     @Column(name = "nombre_plato")
     private String nombrePlato;

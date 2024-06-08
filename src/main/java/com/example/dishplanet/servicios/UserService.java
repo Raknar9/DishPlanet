@@ -7,19 +7,20 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+
 @Slf4j
 @RequiredArgsConstructor
 @Service
 public class UserService {
     @Autowired
     UsuarioRepository userRepository;
+
     public Usuario findByUsername(String username) {
         return userRepository.findByUsername(username).orElse(null);
     }
@@ -27,6 +28,7 @@ public class UserService {
     public List<Usuario> getAllUsuarios() {
         return userRepository.findAll();
     }
+
     public void saveUser(Usuario user) {
         userRepository.save(user);
     }
@@ -39,6 +41,7 @@ public class UserService {
             return "Invitado"; // Usuario no autenticado
         }
     }
+
     public Long obtenerIDUsuarioPorNombre(String nombreUsuario) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -53,6 +56,16 @@ public class UserService {
             return usuario.getId();
         } else {
             throw new NotFoundException("El usuario con nombre " + nombreUsuario + " no se encontró.");
+        }
+    }
+
+    public Usuario obtenerUsuarioPorId(Long id) {
+        Optional<Usuario> usuarioOptional = userRepository.findById(id);
+        if (usuarioOptional.isPresent()) {
+            return usuarioOptional.get();
+        } else {
+            // Maneja el caso donde no se encuentra el usuario
+            throw new RuntimeException("Usuario no encontrado con ID: " + id);
         }
     }
 

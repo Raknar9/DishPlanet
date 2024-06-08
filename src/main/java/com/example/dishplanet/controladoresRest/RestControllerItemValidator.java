@@ -1,4 +1,4 @@
-package com.example.dishplanet.controladores;
+package com.example.dishplanet.controladoresRest;
 
 import com.example.dishplanet.servicios.InventarioService;
 import com.example.dishplanet.servicios.MenuService;
@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.Map;
 
 @org.springframework.web.bind.annotation.RestController
-public class RestController {
+public class RestControllerItemValidator {
     @Autowired
     private MenuService menuService;
     @Autowired
@@ -22,6 +22,7 @@ public class RestController {
     private InventarioService inventarioService;
     @Autowired
     private UserService usuarioService;
+
     @GetMapping("/item/existe")
     @ResponseBody
     public Map<String, Boolean> existeItem(@RequestParam String nombreItem) {
@@ -42,6 +43,7 @@ public class RestController {
         boolean exists = menuService.existsByNombre(nombreMenu);
         return Collections.singletonMap("existe", exists);
     }
+
     @GetMapping("/usuario/existe")
     @ResponseBody
     public Map<String, Boolean> existeUsuario(@RequestParam String username) {

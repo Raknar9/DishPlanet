@@ -5,58 +5,62 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link"th:href="@{/}">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/plato/entrantes}">Entrantes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/plato/principales}">Principales</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/plato/postres}">Postres</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/plato/bebidas}">Bebidas</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/menu/menus}">Menús</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/pedido/pedidos}">Mi Pedido</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/pedido/verPedidos}">Historial Pedido</a>
-        </li>
-      </ul>
+
+      <div class="nav-item">
+        <a class="nav-link" th:href="@{/}">Inicio</a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" th:href="@{/plato/entrantes}">Entrantes</a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" th:href="@{/plato/principales}">Principales</a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" th:href="@{/plato/postres}">Postres</a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" th:href="@{/plato/bebidas}">Bebidas</a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" th:href="@{/menu/menus}">Menús</a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" th:href="@{/pedido/pedidos}">Mi Pedido</a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" th:href="@{/pedido/verPedidos}">Historial Pedido</a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" th:href="@{/reservas}">Reservar</a>
+      </div>
+      <div class="nav-item" th:if="${#authentication.name == 'admin'}">
+        <a class="nav-link" th:href="@{/consultar-reservas}">Reservas</a>
+      </div>
       <div class="ms-auto d-flex">
         <div class="nav-item" th:if="${!#authorization.expression('isAuthenticated()')}">
           <a class="nav-link" th:href="@{/usuario/login}">
             <i class="fas fa-user"></i>
           </a>
         </div>
-
         <div class="nav-item">
           <a class="nav-link">
-            <i><span th:text="${#authentication.name == 'anonymousUser' ? 'Invitado' : #authentication.name}"></span></i>
+            <span th:text="${#authentication.name == 'anonymousUser' ? 'Invitado' : #authentication.name}"></span>
+          </a>
+        </div>
+        <div class="nav-item" th:if="${#authentication.name == 'admin'}">
+          <a class="nav-link" th:href="@{/panel}">
+            <i class="nav-link">Herramientas</i>
+          </a>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" th:href="@{/usuario/logout}">
+            <i class="fas fa-sign-out-alt"></i>
           </a>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="nav-item" th:if="${#authentication.name == 'admin'}">
-    <a class="nav-link" th:href="@{/panel}">
-      <i class="nav-link">Herramientas</i>
-    </a>
-  </div>
-  <div class="nav-item">
-    <a class="nav-link" th:href="@{/usuario/logout}">
-      <i class="fas fa-sign-out-alt"></i>
-    </a>
+
   </div>
 </nav>
+
 
 

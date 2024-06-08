@@ -4,11 +4,22 @@
     <meta charset="UTF-8">
     <title>Inventario</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/inventario.css}">
-
 </head>
 <body>
 <nav th:replace="~{fragments/barraMenu::barraMenu}"></nav>
 <h1>Inventario</h1>
+<div class="searchBox">
+    <div class="search">
+        <ion-icon name="search-outline"></ion-icon>
+    </div>
+    <div class="searchInput">
+        <input type="text" placeholder="Search Here" id="searchInput">
+    </div>
+    <div class="close">
+        <ion-icon name="close-outline"></ion-icon>
+    </div>
+</div>
+<br><br>
 <table th:if="${#authentication.name == 'admin'}">
     <thead>
     <tr>
@@ -17,10 +28,9 @@
         <th>Cantidad</th>
         <th>Unidad de Medida</th>
         <th>Precio Unitario</th>
-
     </tr>
     </thead>
-    <tbody>
+    <tbody id="inventarioTable">
     <tr th:each="inventario : ${inventarios}">
         <td th:text="${inventario.nombre}"></td>
         <td th:text="${inventario.categoria}"></td>
@@ -37,7 +47,10 @@
     </tbody>
 </table>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script th:src="@{/js/inventario.js}"></script>
+
 </body>
 </html>
+

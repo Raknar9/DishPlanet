@@ -1,39 +1,41 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{fragments/head::encabezado(~{::title}, ~{::link})}">
     <meta charset="UTF-8">
     <title>Panel</title>
     <link rel="stylesheet" th:href="@{/css/controlPanel.css}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 </head>
 <body>
 <nav th:replace="~{fragments/barraMenu::barraMenu}"></nav>
 <div class="container" id="container" th:if="${#authentication.name == 'admin'}">
+    <!-- Sección de Ver / Añadir -->
     <div class="section" id="add-view-section">
         <h2>Ver / Añadir</h2>
         <div class="action-row">
+            <!-- Formulario para Nuevo Menu -->
             <div class="action-container">
                 <div class="lottie-animation" id="add-menu-animation"></div>
                 <form th:action="@{/panel/menu/nuevo}" method="get">
                     <button type="submit" class="btn btn-primary">Nuevo Menu</button>
                 </form>
             </div>
-
+            <!-- Formulario para Nuevo Plato -->
             <div class="action-container">
                 <div class="lottie-animation" id="add-dish-animation"></div>
                 <form th:action="@{/panel/plato/nuevo}" method="get">
                     <button type="submit" class="btn btn-primary">Nuevo Plato</button>
                 </form>
             </div>
-
+            <!-- Formulario para Inventario -->
             <div class="action-container">
                 <div class="lottie-animation" id="view-inventory-animation"></div>
                 <form th:action="@{/inventario}" method="get">
                     <button type="submit" class="btn btn-primary">Inventario</button>
                 </form>
             </div>
-
+            <!-- Formulario para Nuevo item a Inventario -->
             <div class="action-container">
                 <div class="lottie-animation" id="add-inventory-item-animation"></div>
                 <form th:action="@{/inventario/nuevo}" method="get">
@@ -45,9 +47,11 @@
 
     <hr>
 
+    <!-- Sección de Borrar -->
     <div class="section" id="delete-section">
         <h2>Borrar</h2>
         <div class="action-row">
+            <!-- Formulario para Eliminar Plato -->
             <div class="action-container">
                 <div class="lottie-animation" id="delete-dish-animation"></div>
                 <form th:action="@{/panel/plato/eliminar}" method="post" id="eliminarPlatoForm">
@@ -59,7 +63,7 @@
                     <button type="submit" class="btn btn-danger">Eliminar Plato</button>
                 </form>
             </div>
-
+            <!-- Formulario para Eliminar Menú -->
             <div class="action-container">
                 <div class="lottie-animation" id="delete-menu-animation"></div>
                 <form th:action="@{/panel/menu/eliminar}" method="post" id="eliminarMenuForm">
@@ -71,7 +75,7 @@
                     <button type="submit" class="btn btn-danger">Eliminar Menú</button>
                 </form>
             </div>
-
+            <!-- Formulario para Eliminar Item -->
             <div class="action-container">
                 <div class="lottie-animation" id="delete-item-animation"></div>
                 <form th:action="@{/eliminar}" method="post" id="eliminarItemForm">
@@ -91,17 +95,22 @@
         <div class="action-row">
             <div class="action-container">
                 <div class="lottie-animation" id="informe-pedidos-animation"></div>
-                <form th:action="@{/panel/pedido/informePedidos}" method="get">
-                    <button type="submit" class="btn btn-success">Generar Informe de Pedidos</button>
+                <form th:action="@{/panel/pedido/informePedidos}" method="post" id="informePedidosForm">
+
+
+                    <button type="submit" class="btn btn-success" id="generate-report">Generar Informe de Pedidos</button>
+
                 </form>
             </div>
+
         </div>
     </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
 <script th:src="@{/js/controlPanel.js}"></script>
 <script th:src="@{/js/validaciones.js}"></script>
 </body>
 </html>
-

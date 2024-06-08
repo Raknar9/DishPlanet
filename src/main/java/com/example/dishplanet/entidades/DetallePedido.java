@@ -20,7 +20,7 @@ public class DetallePedido {
     @Column(name = "precio_total")
     private double precio_total;
     @Column(name = "Usuario")
-    private  String NombreUsuario;
+    private String NombreUsuario;
     @Column(name = "id_usuario")
     private Long id_usuario;
 }
