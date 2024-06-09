@@ -265,3 +265,14 @@ document.addEventListener("DOMContentLoaded", function() {
             });
     });
 });
+
+//contar pedidos
+document.addEventListener('DOMContentLoaded', function() {
+    var pedidosTableBody = document.getElementById('pedidosTableBody');
+    var pedidoCountSpan = document.getElementById('pedidoCount');
+
+    if (pedidosTableBody && pedidoCountSpan) {
+        var rowCount = pedidosTableBody.getElementsByTagName('tr').length;
+        pedidoCountSpan.textContent = `(${rowCount})`;
+    }
+});
