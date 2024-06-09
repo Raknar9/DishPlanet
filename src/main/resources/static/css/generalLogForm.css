@@ -3,18 +3,12 @@
     padding: 0;
     box-sizing: border-box;
     font-size: 14px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: 14px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Roboto Light";
 }
 
+
 body {
-    background-image: url("../img/log.jpg");
+    background-image: url("../img/a.jpg");
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -61,8 +55,9 @@ body {
 }
 
 h1, h2 {
-    color: #FFFF00;
-    font-size: 3rem;
+    text-align: center;
+    color: orangered;
+    text-shadow: 2px 2px 6px rgba(255, 255, 0, 0.7), -2px -2px 6px rgba(255, 165, 0, 0.7);
     margin-bottom: 1.5rem;
 }
 
@@ -140,4 +135,4 @@ a:hover {
 .lnr {
     color: #fff;
 }
-.btn{background-color: yellow}
+.btn{background-color: orange}

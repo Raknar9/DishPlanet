@@ -3,14 +3,14 @@
     padding: 0;
     box-sizing: border-box;
     font-size: 14px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Roboto Light";
 }
 
 body {
-    font-family: Arial, sans-serif;
+
     margin: 0;
     padding: 20px;
-    background-image: url('../img/log.jpg');
+    background-image: url('../img/a.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -19,7 +19,8 @@ body {
 
 h1, h2 {
     text-align: center;
-    color: yellow;
+    color: orangered;
+    text-shadow: 2px 2px 6px rgba(255, 255, 0, 0.7), -2px -2px 6px rgba(255, 165, 0, 0.7);
     margin-bottom: 20px;
 }
 
@@ -49,7 +50,7 @@ table {
 }
 
 thead {
-    background-color: #007bff;
+    background-color: darkgray;
     color: #fff;
 }
 
@@ -63,9 +64,7 @@ tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-tr:hover {
-    background-color: #f1f1f1;
-}
+
 
 input[type="datetime-local"], input[type="text"], input[type="number"] {
     margin-right: 10px;

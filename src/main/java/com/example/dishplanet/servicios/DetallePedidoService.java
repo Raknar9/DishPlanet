@@ -67,6 +67,6 @@ public class DetallePedidoService {
         response.setHeader("Content-Disposition", "attachment; filename=informe_pedidos.pdf");
         response.getOutputStream().write(baos.toByteArray());
         // Enviar el PDF como adjunto en el correo electrónico
-        emailService.sendEmailWithAttachment("alejanbenitez.002@gmail.com", "Informe de Pedidos", "Adjunto encontrarás el informe de pedidos.", baos);
+        emailService.sendEmailWithAttachment("aqui va un email", "Informe de Pedidos", "Adjunto encontrarás el informe de pedidos.", baos);
     }
 }

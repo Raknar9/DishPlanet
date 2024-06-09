@@ -1,34 +1,43 @@
-/* Estilo para centrar el título "Postres" */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-size: 14px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-h1 {
-    text-align: center;
-    color: yellow;
+    font-family: "Roboto Light";
 }
 
-/* Estilo para las imágenes de los platos */
+h1 {
+    text-align: center;
+    color: orangered;
+    text-shadow: 2px 2px 6px rgba(255, 255, 0, 0.7), -2px -2px 6px rgba(255, 165, 0, 0.7);
+}
+
+.card {
+    background-color: transparent; /* Fondo blanco con 80% de opacidad */
+    border: none; /* Elimina el borde para que se vea más limpio */
+}
+.card-body{background-color: transparent}
+
 .card-img-top {
     width: 200px; /* Tamaño fijo para las imágenes */
     height: 150px; /* Tamaño fijo para las imágenes */
     object-fit: cover; /* Para asegurarse de que todas las imágenes se ajusten al contenedor */
 }
 
-
 body {
-    font-family: 'Rockwell', 'Arial', sans-serif;
-  background-image: url("../img/log.jpg");
+    background-image: url("../img/a.jpg");
+    background-size: cover;
+    background-position: center;
 }
 
 .footer-logo {
     max-width: 150px; /* Establece el ancho máximo de la imagen */
     height: auto; /* Permite que la altura se ajuste automáticamente */
 }
-/* efecto para la pantalla de carga */
+.card-text { color: orangered;}
+
+.card-title{ color: orangered;}
+
 .loader {
     position: absolute;
     top: 50%;

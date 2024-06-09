@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-size: 14px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Roboto Light";
 }
 #overlay{
     display:none;

@@ -5,7 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     font-size: 14px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Roboto Light";
 }
 
 /* Estilo del navbar */
@@ -15,6 +15,7 @@
     width: 100%;
     z-index: 1000;
 }
+
 
 /* Estilo de los enlaces en el navbar */
 .navbar .nav-link {
@@ -54,7 +55,7 @@ footer .col-md-3 {
 }
 
 footer .footer-logo {
-    max-width: 150px;
+    max-width: 100px;
     height: auto;
 }
 
