@@ -1,0 +1,9 @@
+com.example.dishplanet
+com.example.dishplanet.config
+com.example.dishplanet.controladores
+com.example.dishplanet.controladoresRest
+com.example.dishplanet.entidades
+com.example.dishplanet.repositorios
+com.example.dishplanet.seguridad
+com.example.dishplanet.servicios
+com.example.dishplanet.TEST

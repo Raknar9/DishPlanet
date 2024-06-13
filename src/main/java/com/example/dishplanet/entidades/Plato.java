@@ -7,7 +7,9 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 
 
-
+/**
+ * Clase que representa los platos en el sistema.
+ */
 @Builder
 @Getter
 @Setter

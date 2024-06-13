@@ -6,7 +6,11 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 import java.util.Optional;
-
+/**
+ * Repositorio JPA para la entidad Plato.
+ * Proporciona métodos para realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar)
+ * sobre objetos Plato en la base de datos.
+ */
 public interface PlatoRepository extends JpaRepository<Plato, Long> {
 
     @Query("SELECT p FROM Plato p WHERE p.tipo = 'Postre'")

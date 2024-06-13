@@ -15,17 +15,33 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Servicio para gestionar operaciones relacionadas con los detalles de los pedidos.
+ */
 @Service
 public class DetallePedidoService {
+
     @Autowired
     private DetallePedidoRepository detallePedidoRepository;
+
     @Autowired
     private EmailService emailService;
 
+    /**
+     * Guarda un detalle de pedido en la base de datos.
+     *
+     * @param detallePedido El detalle del pedido a guardar.
+     */
     public void guardarDetallePedido(DetallePedido detallePedido) {
         detallePedidoRepository.save(detallePedido);
     }
 
+    /**
+     * Genera un informe en formato PDF de todos los pedidos y lo envía por correo electrónico como adjunto.
+     *
+     * @param response El objeto HttpServletResponse para escribir el archivo PDF y descargarlo.
+     * @throws IOException Si ocurre algún error de entrada/salida al escribir el archivo PDF.
+     */
     public void generarInformePedidos(HttpServletResponse response) throws IOException {
         List<DetallePedido> pedidos = detallePedidoRepository.findAll();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -67,6 +83,6 @@ public class DetallePedidoService {
         response.setHeader("Content-Disposition", "attachment; filename=informe_pedidos.pdf");
         response.getOutputStream().write(baos.toByteArray());
         // Enviar el PDF como adjunto en el correo electrónico
-        emailService.sendEmailWithAttachment("aqui va un email", "Informe de Pedidos", "Adjunto encontrarás el informe de pedidos.", baos);
+        emailService.sendEmailWithAttachment("alejanbenitez.002@gmail.com", "Informe de Pedidos", "Adjunto encontrarás el informe de pedidos.", baos);
     }
 }

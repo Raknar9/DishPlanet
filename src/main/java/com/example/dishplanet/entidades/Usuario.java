@@ -7,7 +7,9 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-
+/**
+ * Clase que representa los usuarios en el sistema.
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

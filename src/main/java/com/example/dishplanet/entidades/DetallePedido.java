@@ -3,6 +3,9 @@ package com.example.dishplanet.entidades;
 import jakarta.persistence.*;
 import lombok.*;
 
+/**
+ * Clase que representa los detalles de un pedido en el sistema.
+ */
 @Builder
 @Getter
 @Setter

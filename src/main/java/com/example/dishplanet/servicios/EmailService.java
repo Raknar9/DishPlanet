@@ -12,16 +12,28 @@ import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayOutputStream;
 
+/**
+ * Servicio para el envío de correos electrónicos.
+ */
 @Service
 public class EmailService {
+
     @Autowired
     private JavaMailSender mailSender;
+
     @Value("${spring.mail.username}")
     private String email;
 
     @Value("${spring.mail.password}")
     private String password;
 
+    /**
+     * Envía un correo electrónico simple sin adjunto.
+     *
+     * @param to      El destinatario del correo.
+     * @param subject El asunto del correo.
+     * @param text    El cuerpo del correo.
+     */
     public void sendEmail(String to, String subject, String text) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(to);
@@ -30,6 +42,14 @@ public class EmailService {
         mailSender.send(message);
     }
 
+    /**
+     * Envía un correo electrónico con un archivo adjunto en formato PDF.
+     *
+     * @param to      El destinatario del correo.
+     * @param subject El asunto del correo.
+     * @param text    El cuerpo del correo.
+     * @param baos    El ByteArrayOutputStream que contiene los datos del archivo adjunto.
+     */
     public void sendEmailWithAttachment(String to, String subject, String text, ByteArrayOutputStream baos) {
         MimeMessage message = mailSender.createMimeMessage();
         try {

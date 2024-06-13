@@ -7,6 +7,9 @@ import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+/**
+ * Clase que representa del inventario en el sistema.
+ */
 @Builder
 @Getter
 @Setter

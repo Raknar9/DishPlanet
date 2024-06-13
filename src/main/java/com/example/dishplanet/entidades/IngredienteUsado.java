@@ -3,6 +3,9 @@ package com.example.dishplanet.entidades;
 import jakarta.persistence.*;
 import lombok.*;
 
+/**
+ * Clase que representa los ingredientes usados en el sistema.
+ */
 @Builder
 @Getter
 @Setter

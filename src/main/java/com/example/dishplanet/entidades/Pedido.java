@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 
-
+/**
+ * Clase que representa los pedidos en el sistema.
+ */
 @Builder
 @Getter
 @Setter

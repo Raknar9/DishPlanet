@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
-
+/**
+ * Clase que representa las reservas en el sistema.
+ */
 @Builder
 @Getter
 @Setter
