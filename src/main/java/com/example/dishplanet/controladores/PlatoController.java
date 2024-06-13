@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -102,7 +103,14 @@ public class PlatoController {
                                     @RequestParam("precio") double precio,
                                     @RequestParam("ingredientes") String ingredientes,
                                     @RequestParam("tipo") String tipo,
-                                    @RequestParam("imagen") MultipartFile imagen) throws IOException {
+                                    @RequestParam("imagen") MultipartFile imagen,
+                                    RedirectAttributes redirectAttributes) throws IOException {
+        // Validar que solo se permiten imágenes JPG y PNG
+        String contentType = imagen.getContentType();
+        if (!contentType.equals("image/jpeg") && !contentType.equals("image/png")) {
+            redirectAttributes.addFlashAttribute("error", "Solo se permiten imágenes en formato JPG y PNG.");
+            return "redirect:/panel/plato/nuevo";
+        }
         // Guardar el plato en la base de datos
         Plato plato = new Plato();
         plato.setNombre(nombre);

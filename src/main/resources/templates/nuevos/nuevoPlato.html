@@ -37,6 +37,9 @@
       <label>Imagen:</label>
       <input type="file" name="imagen" id="imagen" accept="image/*" required>
       <span class="error" id="errorImagen"></span><br>
+      <div th:if="${error}" th:text="${error}" class="alert alert-danger"></div>
+
+
 
       <button type="submit">Guardar</button>
     </form>
