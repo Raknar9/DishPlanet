@@ -13,15 +13,15 @@ h1 {
 }
 
 .card {
-    background-color: transparent; /* Fondo blanco con 80% de opacidad */
-    border: none; /* Elimina el borde para que se vea más limpio */
+    background-color: transparent;
+    border: none;
 }
 .card-body{background-color: transparent}
 
 .card-img-top {
-    width: 200px; /* Tamaño fijo para las imágenes */
-    height: 150px; /* Tamaño fijo para las imágenes */
-    object-fit: cover; /* Para asegurarse de que todas las imágenes se ajusten al contenedor */
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
 }
 
 body {
@@ -31,8 +31,8 @@ body {
 }
 
 .footer-logo {
-    max-width: 150px; /* Establece el ancho máximo de la imagen */
-    height: auto; /* Permite que la altura se ajuste automáticamente */
+    max-width: 150px;
+    height: auto;
 }
 .card-text { color: orangered;}
 

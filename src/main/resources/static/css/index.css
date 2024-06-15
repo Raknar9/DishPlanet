@@ -18,14 +18,14 @@ body {
     text-shadow: 2px 2px 6px rgba(255, 255, 0, 0.7), -2px -2px 6px rgba(255, 165, 0, 0.7);
 }
 
-/* Background Image */
+
 .background-image {
     background-image: url('../img/a.jpg');
     background-size: cover;
     background-position: center;
 }
 
-/* Container Styles */
+
 .container {
     display: flex;
     justify-content: center;
@@ -41,7 +41,7 @@ body {
 }
 
 .text-box {
-    flex-basis: 60%; /* Ajustar para dar más espacio al slider */
+    flex-basis: 60%;
     padding: 20px;
 }
 
@@ -53,13 +53,13 @@ body {
     margin-bottom: 20px;
 }
 
-/* Image Slider Styles */
+
 .image-slider {
     overflow: hidden;
     width: 100%;
     height: 400px;
     position: relative;
-    border: 2px solid #FFA500; /* Añadir borde para resaltar */
+    border: 2px solid #FFA500;
     border-radius: 10px;
 }
 
@@ -78,7 +78,7 @@ body {
     opacity: 1;
 }
 
-/* Top Menus Section */
+
 .menus-container {
     display: flex;
     justify-content: center;
@@ -87,8 +87,8 @@ body {
 }
 
 .menu-box {
-    background-color: #f0f0f0; /* Cambiar a un color más claro */
-    border: 2px solid #FFA500; /* Resaltar con un borde */
+    background-color: #f0f0f0;
+    border: 2px solid #FFA500;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin: 10px;
@@ -100,7 +100,7 @@ body {
 
 .menu-box:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añadir sombra en el hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .menu-box h3 {

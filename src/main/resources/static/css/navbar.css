@@ -1,5 +1,5 @@
 
-/* Estilo global */
+
 * {
     margin: 0;
     padding: 0;
@@ -8,7 +8,7 @@
     font-family: "Roboto Light";
 }
 
-/* Estilo del navbar */
+
 .navbar {
     position: fixed;
     top: 0;
@@ -17,17 +17,17 @@
 }
 
 
-/* Estilo de los enlaces en el navbar */
+
 .navbar .nav-link {
-    color: #fff; /* Texto blanco */
-    transition: color 0.3s ease; /* Transición suave */
+    color: #fff;
+    transition: color 0.3s ease;
 }
 
 .navbar .nav-link:hover {
-    color: #ffc107; /* Texto amarillo al pasar el mouse */
+    color: #ffc107;
 }
 
-/* Estilo del footer */
+
 footer {
     background-color: #575757;
     color: #fff;

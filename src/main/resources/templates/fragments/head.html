@@ -5,16 +5,13 @@
   <meta name="description" content="">
 
   <title th:replace="${titulo}">Título</title>
-  <!-- Bootstrap core CSS -->
+
   <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
-  <!-- Font awesome icons -->
+
   <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet" type="text/css"/>
 
-  <!-- Additional external CSS -->
   <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css}">
   <link rel="stylesheet" th:href="@{/css/navbar.css}">
 
-
-  <!-- Estilos o scripts adicionales -->
   <th:block th:replace="${enlaces}" />
 </head>

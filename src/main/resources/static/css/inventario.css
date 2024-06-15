@@ -82,9 +82,9 @@ button.btn-primary:hover {
     background-color: #0056b3;
 }
 .searchBox {
-    position: fixed; /* Cambiado de relative a fixed */
-    top: 50px; /* Ajusta la distancia desde la parte superior */
-    right: 20px; /* Ajusta la distancia desde la derecha */
+    position: fixed;
+    top: 50px;
+    right: 20px;
     width: 60px;
     height: 60px;
     background: #fff;

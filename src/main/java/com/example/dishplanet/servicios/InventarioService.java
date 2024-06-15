@@ -5,6 +5,7 @@ import com.example.dishplanet.repositorios.InventarioRepository;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,6 +23,8 @@ public class InventarioService {
 
     @Autowired
     private EmailService emailService;
+    @Autowired
+    private SimpMessagingTemplate messagingTemplate;
 
     /**
      * Guarda un nuevo inventario en la base de datos.
@@ -58,6 +61,7 @@ public class InventarioService {
             Inventario inventario = inventarioOpt.get();
             inventario.setCantidad(inventario.getCantidad() - 1);
             inventarioRepository.save(inventario);
+            messagingTemplate.convertAndSend("/topic/inventario", inventario);
         }
     }
 
@@ -69,7 +73,10 @@ public class InventarioService {
     @Transactional
     public void deleteByNombre(String nombre) {
         Optional<Inventario> inventario = inventarioRepository.findByNombre(nombre);
-        inventario.ifPresent(inventarioRepository::delete);
+        inventario.ifPresent(item -> {
+            inventarioRepository.delete(item);
+            messagingTemplate.convertAndSend("/topic/inventario", item);
+        });
     }
 
     /**
@@ -92,12 +99,14 @@ public class InventarioService {
 
                 mensaje.append(String.format("El item %s llegó a %d unidades.\nSe repuso con %d unidades más.\nCosto total de la reposición: %.2f\n\n",
                         item.getNombre(), 20, cantidadReponer, costoTotal));
+                messagingTemplate.convertAndSend("/topic/inventario", item);
             }
         }
 
         if (enviarAlerta) {
             inventarioRepository.saveAll(items);
-            emailService.sendEmail("alejanbenitez.002@gmail.com", "Alerta de Inventario", mensaje.toString());
+            // Suponiendo que hay un servicio de correo configurado
+            emailService.sendEmail("alejaben.990@gmail.com", "Alerta de Inventario", mensaje.toString());
         }
     }
 

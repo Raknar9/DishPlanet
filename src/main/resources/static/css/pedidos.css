@@ -35,24 +35,24 @@ body {
 }
 
 .btn-primary {
-    background-color: #0056b3; /* Azul oscuro para mejor contraste */
+    background-color: #0056b3;
     border-color: #0056b3;
-    color: white; /* Texto blanco para mayor legibilidad */
+    color: white;
 }
 
 .btn-primary:hover {
-    background-color: #003d80; /* Azul más oscuro para el hover */
+    background-color: #003d80;
     border-color: #003d80;
 }
 
 .btn-secondary {
-    background-color: #28a745; /* Verde para contraste */
+    background-color: #28a745;
     border-color: #28a745;
-    color: white; /* Texto blanco para mayor legibilidad */
+    color: white;
 }
 
 .btn-secondary:hover {
-    background-color: #1e7e34; /* Verde más oscuro para el hover */
+    background-color: #1e7e34;
     border-color: #1e7e34;
 }
 
@@ -68,8 +68,8 @@ h1, h2 {
 
 input[type="email"] {
     display: block;
-    width: 50%; /* Ajusta el tamaño según tus necesidades */
-    margin: 20px auto; /* Centra el input */
+    width: 50%;
+    margin: 20px auto;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;

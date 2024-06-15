@@ -6,7 +6,6 @@ import static org.mockito.Mockito.when;
 import java.io.ByteArrayOutputStream;
 
 import com.example.dishplanet.servicios.EmailService;
-import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -14,9 +13,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.core.io.ByteArrayResource;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
+
 
 public class EmailServiceTest {
 

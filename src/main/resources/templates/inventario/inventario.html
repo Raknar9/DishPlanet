@@ -3,6 +3,7 @@
 <head th:replace="~{fragments/head::encabezado(~{::title}, ~{::link})}">
     <meta charset="UTF-8">
     <title>Inventario</title>
+
     <link rel="stylesheet" type="text/css" th:href="@{/css/inventario.css}">
 </head>
 <body>
@@ -31,13 +32,13 @@
     </tr>
     </thead>
     <tbody id="inventarioTable">
-    <tr th:each="inventario : ${inventarios}">
+    <tr th:each="inventario : ${inventarios}" th:attr="data-id=${inventario.idInventario}">
         <td th:text="${inventario.nombre}"></td>
         <td th:text="${inventario.categoria}"></td>
         <td>
             <form th:action="@{/inventario/actualizar}" method="post">
                 <input type="hidden" name="id" th:value="${inventario.idInventario}">
-                <input type="number" name="cantidad" th:value="${inventario.cantidad}" required>
+                <input type="number" name="cantidad" class="cantidad" th:value="${inventario.cantidad}" required>
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </form>
         </td>
@@ -46,11 +47,14 @@
     </tr>
     </tbody>
 </table>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.5.0/dist/sockjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script th:src="@{/js/inventario.js}"></script>
-
+<script th:src="@{/js/websocket.js}"></script>
 </body>
 </html>
 

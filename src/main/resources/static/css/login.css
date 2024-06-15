@@ -34,7 +34,7 @@ body {
     position: relative;
     overflow: hidden;
     padding: 3.5rem;
-    background-color: white; /* Fondo oscuro para mejor legibilidad */
+    background-color: white;
 }
 
 .container:hover {
@@ -48,7 +48,7 @@ body {
     left: 0;
     height: 130px;
     width: 100%;
-    background: #FFA500; /* Naranja */
+    background: #FFA500;
     border-bottom-left-radius: 50% 50%;
     border-bottom-right-radius: 50% 50%;
     transition: 0.5s;
@@ -59,7 +59,7 @@ body {
 }
 
 h1 {
-    color: black; /* Amarillo */
+    color: black;
     font-size: 3rem;
     margin-bottom: 1.5rem;
 }
@@ -74,22 +74,22 @@ h1 {
 .email input, .password input {
     width: 100%;
     background: transparent;
-    border: 1px solid #FFA500; /* Naranja */
+    border: 1px solid #FFA500;
     border-radius: 30px;
     padding: 5px 25px;
     outline: none;
-    color: black; /* Blanco */
+    color: black;
 }
 
 .email i, .password i {
     position: absolute;
     top: 30%;
     right: 10px;
-    color: #FFA500; /* Naranja */
+    color: #FFA500;
 }
 
 .container:hover h1 {
-    color: #FFFF00; /* Amarillo */
+    color: #FFFF00;
     z-index: 1;
 }
 
@@ -99,7 +99,7 @@ h1 {
     margin: 15px 0;
     display: flex;
     align-items: center;
-    color: #fff; /* Blanco */
+    color: #fff;
 }
 
 .remember-password input {
@@ -109,10 +109,10 @@ h1 {
 button {
     width: 100%;
     background: transparent;
-    border: 1px solid #FFFF00; /* Amarillo */
+    border: 1px solid #FFFF00;
     border-radius: 30px;
     height: 35px;
-    background-color: #FFA500; /* Naranja */
+    background-color: #FFA500;
     color: #fff; /* Blanco */
     font-weight: 700;
     margin: 15px 0;
@@ -120,13 +120,13 @@ button {
 }
 
 button:hover {
-    background-color: #FFFF00; /* Amarillo */
-    border: 1px solid #FFA500; /* Naranja */
-    color: #FFA500; /* Naranja */
+    background-color: #FFFF00;
+    border: 1px solid #FFA500;
+    color: #FFA500;
 }
 
 p, a {
-    color: black; /* Blanco */
+    color: black;
 }
 
 a {
@@ -134,7 +134,7 @@ a {
 }
 
 a:hover {
-    color: #FFA500; /* Naranja */
+    color: #FFA500;
 }
 
 .error {

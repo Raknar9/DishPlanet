@@ -5,7 +5,7 @@ let animationPath = '/animations/animation.json';
 // Configuración de la animación
 let animationSettings = {
     container: document.getElementById('lottie-animation'),
-    renderer: 'svg', // Puedes utilizar 'svg', 'canvas' o 'html'
+    renderer: 'svg',
     loop: true,
     autoplay: true,
     path: animationPath

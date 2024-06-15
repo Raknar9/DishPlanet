@@ -1,98 +1,125 @@
 package com.example.dishplanet.TEST;
 
+import static org.junit.Assert.assertThrows;
 import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.example.dishplanet.entidades.Inventario;
 import com.example.dishplanet.repositorios.InventarioRepository;
 import com.example.dishplanet.servicios.EmailService;
 import com.example.dishplanet.servicios.InventarioService;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 
-@ExtendWith(MockitoExtension.class)
+import org.mockito.MockitoAnnotations;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
+
+import static org.mockito.Mockito.verify;
+
 public class InventarioServiceTest {
 
     @Mock
     private InventarioRepository inventarioRepository;
 
+    @InjectMocks
+    private InventarioService inventarioService;
+    @Mock
+    private SimpMessagingTemplate messagingTemplate;
     @Mock
     private EmailService emailService;
 
-    @InjectMocks
-    private InventarioService inventarioService;
-
-    @Test
-    public void testRevisarYActualizarInventario_AlertaEnviada() {
-        // Datos de prueba
-        Inventario item1 = new Inventario();
-        item1.setNombre("Item 1");
-        item1.setCategoria("Categoría 1");
-        item1.setCantidad(15);
-        item1.setUnidadMedida("unidad");
-        item1.setPrecioUnitario(10.0);
-
-        Inventario item2 = new Inventario();
-        item1.setNombre("Item 2");
-        item1.setCategoria("Categoría 1");
-        item1.setCantidad(25);
-        item1.setUnidadMedida("unidad");
-        item1.setPrecioUnitario(12.0);
-
-        List<Inventario> items = new ArrayList<>();
-        items.add(item1);
-        items.add(item2);
-
-        // Configuración del comportamiento del repositorio
-        when(inventarioRepository.findAll()).thenReturn(items);
-
-        // Ejecutar el método a probar
-        inventarioService.revisarYActualizarInventario();
-
-        // Verificar que el inventario se actualizó correctamente
-        verify(inventarioRepository).saveAll(items);
-
-        // Verificar que se envió un correo electrónico de alerta
-        verify(emailService).sendEmail(eq("alejanbenitez.002@gmail.com"), eq("Alerta de Inventario"), anyString());
+    public InventarioServiceTest() {
+        MockitoAnnotations.initMocks(this);
     }
 
     @Test
-    public void testRevisarYActualizarInventario_AlertaNoEnviada() {
-        // Datos de prueba
-        Inventario item1 = new Inventario();
-        item1.setNombre("Item 1");
-        item1.setCategoria("Categoría 1");
-        item1.setCantidad(25);
-        item1.setUnidadMedida("unidad");
-        item1.setPrecioUnitario(10.0);
+    public void testGuardarInventario() {
+        Inventario inventario = new Inventario();
 
-        Inventario item2 = new Inventario();
-        item2.setNombre("Item 2");
-        item2.setCategoria("Categoría 1");
-        item2.setCantidad(30);
-        item2.setUnidadMedida("unidad");
-        item2.setPrecioUnitario(12.0);
+        inventarioService.guardarInventario(inventario);
 
-        List<Inventario> items = new ArrayList<>();
-        items.add(item1);
-        items.add(item2);
+        verify(inventarioRepository).save(inventario);
+    }
+    @Test
+    public void testActualizarCantidad() {
+        Long id = 1L;
+        int nuevaCantidad = 10;
 
-        // se configura el comportamiento del repositorio
-        when(inventarioRepository.findAll()).thenReturn(items);
+        Inventario inventario = new Inventario();
+        when(inventarioRepository.findById(id)).thenReturn(Optional.of(inventario));
 
-        // llama al servicio que se quiere probar
-        inventarioService.revisarYActualizarInventario();
+        inventarioService.actualizarCantidad(id, nuevaCantidad);
 
-        // verifica que el inventario no se actualizo
-        verify(inventarioRepository, never()).saveAll(items);
-
-        // y verifica que el email se envio correctamente
-        verify(emailService, never()).sendEmail(anyString(), anyString(), anyString());
+        verify(inventarioRepository).save(inventario);
+        assert(inventario.getCantidad() == nuevaCantidad);
     }
 
+    @Test
+    public void testActualizarCantidad_InventarioNoEncontrado() {
+        Long id = 1L;
+        int nuevaCantidad = 10;
+
+        when(inventarioRepository.findById(id)).thenReturn(Optional.empty());
+
+        assertThrows(RuntimeException.class, () -> inventarioService.actualizarCantidad(id, nuevaCantidad));
+    }
+    @Test
+    public void testUpdateInventario() {
+        String nombreIngrediente = "NombreIngrediente";
+
+        Inventario inventario = new Inventario();
+        inventario.setCantidad(5); // Establecer una cantidad inicial
+
+        when(inventarioRepository.findByNombre(nombreIngrediente)).thenReturn(Optional.of(inventario));
+
+        inventarioService.updateInventario(nombreIngrediente);
+
+        verify(inventarioRepository).save(inventario);
+        verify(messagingTemplate).convertAndSend("/topic/inventario", inventario);
+    }
+    @Test
+    public void testDeleteByNombre() {
+        String nombre = "NombreInventario";
+
+        Inventario inventario = new Inventario();
+        when(inventarioRepository.findByNombre(nombre)).thenReturn(Optional.of(inventario));
+
+        inventarioService.deleteByNombre(nombre);
+
+        verify(inventarioRepository).delete(inventario);
+        verify(messagingTemplate).convertAndSend("/topic/inventario", inventario);
+    }
+    @Test
+    public void testRevisarYActualizarInventario() {
+        Inventario item1 = new Inventario();
+        item1.setCantidad(15); // Esta cantidad debe activar la reposición
+        item1.setPrecioUnitario(10.0); // Establecer un precio unitario para calcular el costo total
+
+        Inventario item2 = new Inventario();
+        item2.setCantidad(25); // Esta cantidad no activa la reposición
+
+        List<Inventario> inventarios = new ArrayList<>();
+        inventarios.add(item1);
+        inventarios.add(item2);
+
+        when(inventarioRepository.findAll()).thenReturn(inventarios);
+
+        inventarioService.revisarYActualizarInventario();
+
+        verify(inventarioRepository).saveAll(inventarios);
+
+        // Verificar que se envíe un correo electrónico
+        verify(emailService).sendEmail(anyString(), anyString(), anyString());
+
+        // Verificar que se envíe un mensaje a través de SimpMessagingTemplate para item1
+        verify(messagingTemplate).convertAndSend(eq("/topic/inventario"), eq(item1));
+
+        // Verificar que NO se envíe un mensaje para item2, ya que no se ha modificado su cantidad
+        verify(messagingTemplate, never()).convertAndSend(eq("/topic/inventario"), eq(item2));
+    }
 }
+

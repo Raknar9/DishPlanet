@@ -1,4 +1,4 @@
-/* Estilos para el div que contiene la animación */
+
 * {
     box-sizing: border-box;
     font-size: 14px;
@@ -6,8 +6,8 @@
 }
 
 html, body {
-    height: 100%; /* Asegura que el html y body ocupen toda la altura de la ventana */
-    margin: 0; /* Elimina el margen por defecto */
+    height: 100%;
+    margin: 0;
 }
 
 body {
@@ -28,7 +28,7 @@ body {
     margin: 0 auto; /* Centrar horizontalmente */
 }
 
-/* Estilos para el div que contiene el botón */
+
 .btn-container {
     text-align: center; /* Centrar horizontalmente */
     margin-top: 20px; /* Espacio superior */

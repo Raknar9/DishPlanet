@@ -6,7 +6,7 @@ let addMenuAnimation = lottie.loadAnimation({
     renderer: 'svg',
     loop: true,
     autoplay: true,
-    path: '/animations/plato.json' // Path to your Lottie animation JSON file
+    path: '/animations/plato.json'
 });
 
 let addDishAnimation = lottie.loadAnimation({
@@ -59,10 +59,10 @@ let deleteItemAnimation = lottie.loadAnimation({
 
 document.addEventListener("DOMContentLoaded", function() {
     lottie.loadAnimation({
-        container: document.getElementById('informe-pedidos-animation'), // ID del contenedor de la animación
+        container: document.getElementById('informe-pedidos-animation'),
         renderer: 'svg',
         loop: true,
         autoplay: true,
-        path: '/animations/mail.json' // Ruta al archivo JSON de la animación Lottie
+        path: '/animations/mail.json'
     });
 });

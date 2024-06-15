@@ -325,6 +325,12 @@ public class PedidoController {
         double total = pedidoService.calcularTotal(subtotal, iva);
         StringBuilder emailContent = new StringBuilder();
         emailContent.append("Recibo de su pedido:\n\n");
+        double precioTotal = 0;
+        StringBuilder nombresPlatos = new StringBuilder();
+        for (Pedido pedido : pedidos) { //para ingresar los platos en detallePedido
+            precioTotal += pedido.getPrecio();
+            nombresPlatos.append(pedido.getNombrePlato()).append("\n"); // Separador de línea
+        }
         for (Pedido pedido : pedidos) {
             emailContent.append("Plato: ").append(pedido.getNombrePlato()).append("\n");
             emailContent.append("Precio: € ").append(String.format("%.2f", pedido.getPrecio())).append("\n\n");
@@ -332,6 +338,16 @@ public class PedidoController {
         emailContent.append("Subtotal: € ").append(String.format("%.2f", subtotal)).append("\n");
         emailContent.append("IVA (10%): € ").append(String.format("%.2f", iva)).append("\n");
         emailContent.append("Total: € ").append(String.format("%.2f", total)).append("\n");
+        //guarda los pedidos de detalle pedidos
+        String nombreUsuario = userService.obtenerNombreUsuario();
+        Long idUsuario = userService.obtenerIDUsuarioPorNombre(nombreUsuario);
+        DetallePedido detallePedido = new DetallePedido();
+        detallePedido.setNombres_platos(nombresPlatos.toString());
+        detallePedido.setPrecio_total(precioTotal);
+        detallePedido.setNombreUsuario(nombreUsuario);
+        detallePedido.setId_usuario(idUsuario); // Guardar el nombre del usuario
+        detallePedidoService.guardarDetallePedido(detallePedido);
+
         emailService.sendEmail(email, "Recibo de Pedido", emailContent.toString());
         pedidoService.borrarTodosLosPedidos();
         model.addAttribute("message", "El recibo ha sido enviado a " + email);
