@@ -11,7 +11,7 @@ html, body {
 }
 
 body {
-    background-image: url('../img/log.jpg');
+    background-image: url('../img/a.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat; /* Evita que la imagen se repita */
